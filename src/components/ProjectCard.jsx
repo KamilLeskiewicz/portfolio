@@ -19,7 +19,7 @@ function ProjectCard({ project }) {
         sx={{ height: project.height }}
       />
       <CardContent>
-        <Typography variant="h5" component="div">sssssssssss
+        <Typography variant="h5" component="div">
           {project.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
