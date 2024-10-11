@@ -12,15 +12,24 @@ function About() {
       >
         <Paper elevation={3} sx={{ padding: '2rem', marginTop: '2rem' }}>
         <Grid container spacing={4} alignItems="center">
-          <Grid item xs={12} md={4}>
+          <Grid item xs={1} md={2}>
             <img
-              src="/images/ja.jpg"
+              src="./../images/me.jpeg"
               alt="Kamil"
-              style={{ width: '100%', borderRadius: '50%' }}
+              style={{ width: '100%' }}
             />
           </Grid>
           <Grid item xs={12} md={8}>
-            <Typography variant="h4" gutterBottom>
+            <Typography variant="h4"
+                gutterBottom
+                sx={{
+                  fontSize: {
+                    xs: '1.5rem',
+                    sm: '2rem',
+                    md: '2.5rem',
+                  },
+                  transition: 'font-size 0.3s',
+                }}>
               O mnie
             </Typography>
             <Typography variant="body1">
@@ -35,4 +44,3 @@ function About() {
 }
 
 export default About;
-

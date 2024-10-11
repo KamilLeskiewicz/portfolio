@@ -5,6 +5,7 @@ import Header from './components/Header';
 import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import Skills from './components/Skills';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -34,13 +35,16 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <div className='animated-gradient'>
       <CssBaseline />
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
       <Container maxWidth="lg" sx={{ marginTop: '100px' }}>
         <About />
+        <Skills /> 
         <Projects />
         <Contact />
       </Container>
+      </div>
     </ThemeProvider>
   );
 }
