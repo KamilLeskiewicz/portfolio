@@ -7,12 +7,14 @@ import Contact from './components/Contact';
 
 function App() {
   return (
-    <Container maxWidth="lg">
+    <>
       <Header />
-      <About />
-      <Projects />
-      <Contact />
-    </Container>
+      <Container maxWidth="lg" sx={{ marginTop: '100px' }}>
+        <About />
+        <Projects />
+        <Contact />
+      </Container>
+    </>
   );
 }
 

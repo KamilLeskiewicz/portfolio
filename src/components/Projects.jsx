@@ -1,5 +1,5 @@
-import React from 'react';
 import { Grid, Card, CardContent, CardMedia, Typography, Button } from '@mui/material';
+import React from 'react';
 import { motion } from 'framer-motion';
 import projects from '../data/project';
 
@@ -10,7 +10,7 @@ function Projects() {
         Projekty
       </Typography>
       <Grid container spacing={4}>
-        {projects.map((project) => (
+      {projects.map((project) => (
           <Grid item xs={12} sm={6} md={4} key={project.id}>
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -41,3 +41,4 @@ function Projects() {
 }
 
 export default Projects;
+
