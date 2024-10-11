@@ -3,8 +3,14 @@ import { Card, CardContent, Typography, Box } from '@mui/material';
 
 function SkillCard({ skill, isMobile }) {
   return (
-    <Card>
-      <Box sx={{ display: 'flex', justifyContent: 'center', padding: '1rem' }}>
+    <Card sx={{
+        transition: 'transform 0.3s, box-shadow 0.3s',
+        '&:hover': {
+          transform: 'translateY(-10px)',
+          boxShadow: 6,
+        },
+      }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', padding: '1rem',}}>
         <img
           src={skill.icon}
           alt={skill.name}

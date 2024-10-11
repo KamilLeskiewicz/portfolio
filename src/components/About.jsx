@@ -14,7 +14,7 @@ function About() {
         <Grid container spacing={4} alignItems="center">
           <Grid item xs={1} md={2}>
             <img
-              src="./../images/me.jpeg"
+              src="./../images/me.png"
               alt="Kamil"
               style={{ width: '100%' }}
             />
