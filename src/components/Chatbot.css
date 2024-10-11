@@ -1,103 +1,146 @@
+/* Podstawowe style dla desktopów */
 .chatbot {
-    display: flex;
-    flex-direction: column;
-    height: 90vh;
-    width: 400px;
-    margin: 20px auto;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.chat-header {
+  padding: 15px;
+  background-color: #4a90e2;
+  color: white;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.api-key-input input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px auto;
+  display: block;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.messages {
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+}
+
+.message {
+  margin-bottom: 15px;
+}
+
+.message.user {
+  text-align: right;
+}
+
+.message.bot {
+  text-align: left;
+}
+
+.message-content {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  max-width: 80%;
+}
+
+.message.user .message-content {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.message.bot .message-content {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.input-area {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+.input-area input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.input-area button {
+  padding: 10px 20px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-area button:hover {
+  background-color: #357ab8;
+}
+
+/* Style responsywne dla urządzeń mobilnych */
+@media (max-width: 768px) {
+  .chatbot {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
   }
-  
-  .chat-header {
-    background-color: #007bff;
-    color: white;
-    padding: 15px;
-    text-align: center;
+
+  .api-key-input input {
+    width: 95%;
   }
-  
+
   .messages {
-    flex: 1;
-    padding: 15px;
-    overflow-y: auto;
-    background-color: #f9f9f9;
+    padding: 10px;
   }
-  
-  .message {
-    display: flex;
-    margin-bottom: 10px;
-  }
-  
-  .message.user {
-    justify-content: flex-end;
-  }
-  
-  .message.bot {
-    justify-content: flex-start;
-  }
-  
+
   .message-content {
-    max-width: 70%;
-    padding: 10px 15px;
-    border-radius: 20px;
-    position: relative;
-    word-break: break-word;
+    max-width: 90%;
   }
-  
-  .message.user .message-content {
-    background-color: #007bff;
-    color: white;
-    border-bottom-right-radius: 0;
-  }
-  
-  .message.bot .message-content {
-    background-color: #e0e0e0;
-    color: black;
-    border-bottom-left-radius: 0;
-  }
-  
-  /* Stylowanie dla bloków kodu */
-  .message-content pre {
-    background-color: #2d2d2d;
-    color: #f8f8f2;
-    padding: 15px;
-    border-radius: 5px;
-    overflow-x: auto;
-    margin: 10px 0;
-  }
-  
-  .message-content code {
-    background-color: #f5f5f5;
-    color: #d14;
-    padding: 2px 4px;
-    border-radius: 4px;
-  }
-  
-  .input-area {
-    display: flex;
-    border-top: 1px solid #ddd;
-  }
-  
+
   .input-area input {
-    flex: 1;
-    padding: 15px;
-    border: none;
-    outline: none;
-    font-size: 16px;
+    padding: 8px;
+    font-size: 14px;
   }
-  
+
   .input-area button {
-    padding: 0 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
+    padding: 8px 15px;
+    font-size: 14px;
   }
-  
-  .input-area button:hover {
-    background-color: #0056b3;
+}
+
+@media (max-width: 480px) {
+  .input-area input {
+    font-size: 13px;
+    padding: 6px;
   }
-  
+
+  .input-area button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .message-content {
+    font-size: 14px;
+  }
+}

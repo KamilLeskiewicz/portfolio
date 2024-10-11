@@ -1,7 +1,18 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
-import './Chatbot.css';
+import {
+  Box,
+  Container,
+  IconButton,
+  InputAdornment,
+  TextField,
+  Typography,
+  CircularProgress,
+  Paper,
+} from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
+import { useTheme } from '@mui/material/styles';
 
 function Chatbot() {
   const [messages, setMessages] = useState([
@@ -10,6 +21,7 @@ function Chatbot() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [apiKey, setApiKey] = useState('');
+  const theme = useTheme();
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -18,7 +30,7 @@ function Chatbot() {
       return;
     }
 
-    const isValidApiKey = (key) => /^[\x00-\x7F]*$/.test(key);
+    const isValidApiKey = (key) => /^[\x20-\x7E]*$/.test(key);
     if (!isValidApiKey(apiKey)) {
       alert('Klucz API zawiera nieprawidłowe znaki.');
       return;
@@ -28,7 +40,7 @@ function Chatbot() {
       ...messages,
       { sender: 'user', text: input },
     ];
-    setMessages(newMessages)
+    setMessages(newMessages);
     setInput('');
     setIsLoading(true);
 
@@ -67,52 +79,85 @@ function Chatbot() {
   };
 
   return (
-    <div className="chatbot">
-      <div className="chat-header">
-        <h2>ChatGPT</h2>
-      </div>
-      <div className="api-key-input">
-        <input
-          type="text" 
-          placeholder="Wprowadź swój OpenAI API Key"
+    <Container maxWidth="md" sx={{ mb: 4, mt: 4 }}>
+      <Typography variant="h4" align="center" gutterBottom>
+        ChatGPT
+      </Typography>
+      <Box sx={{ mb: 2 }}>
+        <TextField
+          label="Wprowadź swój OpenAI API Key"
+          variant="outlined"
+          fullWidth
           value={apiKey}
           onChange={(e) => setApiKey(e.target.value.trim())}
         />
-      </div>
-      <div className="messages">
+      </Box>
+      <Paper elevation={3} sx={{ p: 2, mb: 2, maxHeight: '60vh', overflowY: 'auto' }}>
         {messages.map((msg, idx) => (
-          <div
+          <Box
             key={idx}
-            className={`message ${msg.sender}`}
+            sx={{
+              display: 'flex',
+              mb: 1,
+              justifyContent: msg.sender === 'user' ? 'flex-end' : 'flex-start',
+            }}
           >
-            <div className="message-content">
+            <Box
+              sx={{
+                bgcolor: msg.sender === 'user' ? theme.palette.primary.main : theme.palette.grey[300],
+                color: msg.sender === 'user' ? '#fff' : '#000',
+                p: 1.5,
+                borderRadius: 2,
+                maxWidth: '80%',
+              }}
+            >
               {msg.sender === 'bot' ? (
                 <ReactMarkdown>{msg.text}</ReactMarkdown>
               ) : (
-                msg.text
+                <Typography>{msg.text}</Typography>
               )}
-            </div>
-          </div>
+            </Box>
+          </Box>
         ))}
         {isLoading && (
-          <div className="message bot">
-            <div className="message-content">
-              Piszę odpowiedź...
-            </div>
-          </div>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-start', mb: 1 }}>
+            <Box
+              sx={{
+                bgcolor: theme.palette.grey[300],
+                color: '#000',
+                p: 1.5,
+                borderRadius: 2,
+                maxWidth: '80%',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <CircularProgress size={20} sx={{ mr: 1 }} />
+              <Typography>Piszę odpowiedź...</Typography>
+            </Box>
+          </Box>
         )}
-      </div>
-      <div className="input-area">
-        <input
-          type="text"
-          placeholder="Napisz wiadomość..."
+      </Paper>
+      <Box component="form" onSubmit={(e) => { e.preventDefault(); handleSend(); }}>
+        <TextField
+          label="Napisz wiadomość..."
+          variant="outlined"
+          fullWidth
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton color="primary" onClick={handleSend}>
+                  <SendIcon />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
-        <button onClick={handleSend}>Wyślij</button>
-      </div>
-    </div>
+      </Box>
+    </Container>
   );
 }
 

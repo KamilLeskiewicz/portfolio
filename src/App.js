@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline, Container } from '@mui/material';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom';
 import Header from './components/Header';
-import Home from './views/Home';
-import {BrowserRouter, Routes, Route } from 'react-router-dom';
+import About from './components/About';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
 import Chatbot from './components/Chatbot';
 
 function App() {
@@ -34,20 +41,27 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className='animated-gradient'>
       <CssBaseline />
-      <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
-      <Container maxWidth="lg" sx={{ marginTop: '100px' }}>
-      <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="AI" element={<Chatbot/>}/>
-        </Routes>
-        </BrowserRouter>
+      <Router>
+        <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
+        <Container maxWidth="lg" sx={{ marginTop: '100px' }}>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <About />
+                  <Skills />
+                  <Projects />
+                  <Contact />
+                </>
+              }
+            />
+            <Route path="/ai" element={<Chatbot />} />
+          </Routes>
         </Container>
-      </div>
+      </Router>
     </ThemeProvider>
-
   );
 }
 

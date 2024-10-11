@@ -1,8 +1,8 @@
 const projects = [
     {
       id: 1,
-      name: 'Strona z chatem AI',
-      description: 'Strona internetowa z chatem AI.',
+      name: 'Strona z "Terapeutą"" AI',
+      description: 'Strona internetowa z doradcą psychologicznym AI.',
       image: './../images/cyk.png',
       link: 'https://github.com/SmoczaSkala/cyk.pl',
     },
@@ -16,5 +16,5 @@ const projects = [
   ];
   
   export default projects;
-  
+
   
