@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline, Container } from '@mui/material';
 import Header from './components/Header';
-import About from './components/About';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Skills from './components/Skills';
+import Home from './views/Home';
+import {BrowserRouter, Routes, Route } from 'react-router-dom';
+import Chatbot from './components/Chatbot';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -39,13 +38,16 @@ function App() {
       <CssBaseline />
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
       <Container maxWidth="lg" sx={{ marginTop: '100px' }}>
-        <About />
-        <Skills /> 
-        <Projects />
-        <Contact />
-      </Container>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="AI" element={<Chatbot/>}/>
+        </Routes>
+        </BrowserRouter>
+        </Container>
       </div>
     </ThemeProvider>
+
   );
 }
 
