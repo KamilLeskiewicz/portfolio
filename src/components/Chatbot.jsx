@@ -9,25 +9,46 @@ function Chatbot() {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [apiKey, setApiKey] = useState('');
 
   const handleSend = async () => {
     if (!input.trim()) return;
+    if (!apiKey) {
+      alert('Proszę wprowadzić klucz API OpenAI.');
+      return;
+    }
+
+    const isValidApiKey = (key) => /^[\x00-\x7F]*$/.test(key);
+    if (!isValidApiKey(apiKey)) {
+      alert('Klucz API zawiera nieprawidłowe znaki.');
+      return;
+    }
 
     const newMessages = [
       ...messages,
       { sender: 'user', text: input },
     ];
-    setMessages(newMessages);
+    setMessages(newMessages)
     setInput('');
     setIsLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/chat', {
-        messages: newMessages.map((msg) => ({
-          role: msg.sender === 'user' ? 'user' : 'assistant',
-          content: msg.text,
-        })),
-      });
+      const response = await axios.post(
+        'https://api.openai.com/v1/chat/completions',
+        {
+          model: 'gpt-4',
+          messages: newMessages.map((msg) => ({
+            role: msg.sender === 'user' ? 'user' : 'assistant',
+            content: msg.text,
+          })),
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey.trim()}`,
+          },
+        }
+      );
 
       const botReply = response.data.choices[0].message.content;
       setMessages([
@@ -49,6 +70,14 @@ function Chatbot() {
     <div className="chatbot">
       <div className="chat-header">
         <h2>ChatGPT</h2>
+      </div>
+      <div className="api-key-input">
+        <input
+          type="text" 
+          placeholder="Wprowadź swój OpenAI API Key"
+          value={apiKey}
+          onChange={(e) => setApiKey(e.target.value.trim())}
+        />
       </div>
       <div className="messages">
         {messages.map((msg, idx) => (
