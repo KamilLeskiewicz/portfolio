@@ -11,27 +11,41 @@ import {
   ListItemText,
   useMediaQuery,
   Container,
+  Menu,
+  MenuItem,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageIcon from '@mui/icons-material/Language';
 
 function Header({ darkMode, handleThemeChange }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
+  const [anchorElLang, setAnchorElLang] = useState(null);
+  const { t, i18n } = useTranslation();
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
   };
+  const handleLanguageMenu = (event) => {
+    setAnchorElLang(event.currentTarget);
+  };
+  
+  const handleLanguageChange = (lang) => {
+    i18n.changeLanguage(lang);
+    setAnchorElLang(null);
+  };
 
   const menuItems = [
-    { text: 'O mnie', path: '/' },
-    { text: 'Chat', path: '/ai' },
-    { text: 'Projekty', external: true, href: 'https://github.com/SmoczaSkala' },
+    { text: <Typography cariant="h6">{t('aboutme')}</Typography>, path: '/' },
+    { text: <Typography cariant="h6">{t('chat')}</Typography>, path: '/ai' },
+    { text: <Typography cariant="h6">{t('projects')}</Typography>, external: true, href: 'https://github.com/SmoczaSkala' },
   ];
 
   const handleMenuClick = (item) => {
@@ -93,6 +107,17 @@ function Header({ darkMode, handleThemeChange }) {
           >
             {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
           </IconButton>
+          <IconButton color="inherit" onClick={handleLanguageMenu}>
+  <LanguageIcon />
+</IconButton>
+<Menu
+  anchorEl={anchorElLang}
+  open={Boolean(anchorElLang)}
+  onClose={() => setAnchorElLang(null)}
+>
+  <MenuItem onClick={() => handleLanguageChange('pl')}>Polski</MenuItem>
+  <MenuItem onClick={() => handleLanguageChange('en')}>English</MenuItem>
+</Menu>
         </Toolbar>
       </Container>
     </AppBar>

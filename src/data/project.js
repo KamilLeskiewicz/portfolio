@@ -13,6 +13,13 @@ const projects = [
       image: './../images/cms.png',
       link: 'https://github.com/SmoczaSkala/CMSITE',
     },
+    {
+      id: 3,
+      name: 'CardParty',
+      description: 'Projekt współtworzony z moimi znajomymi na EIT',
+      image: './../images/cardparty.png',
+      link: 'https://github.com/CardParty',
+    }
   ];
   
   export default projects;

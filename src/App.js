@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline, Container } from '@mui/material';
 import {
@@ -6,12 +6,13 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-import Header from './components/Header';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Chatbot from './components/Chatbot';
+import Header from './components/home/Header';
+import Chatbot from './components/AI/Chatbot';
+
+const About = lazy(() => import('./components/home/About'));
+const Skills = lazy(() => import('./components/home/Skills'));
+const Projects = lazy(() => import('./components/home/Projects'));
+const Contact = lazy(() => import('./components/home/Contact'));
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {

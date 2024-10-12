@@ -3,17 +3,19 @@ import { Typography, Grid, Collapse, IconButton, Box, useMediaQuery } from '@mui
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import SkillCard from './SkillCard';
-import skills from '../data/skills';
+import skills from '../../data/skills';
 import { useTheme } from '@mui/material/styles';
+import { useTranslation } from 'react-i18next';
 
 function Skills() {
   const [expanded, setExpanded] = useState(false);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // Wykrywamy urządzenia o szerokości mniejszej niż 600px
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (isMobile) {
-      setExpanded(true); // Automatycznie rozwijamy listę na urządzeniach mobilnych
+      setExpanded(true); 
     }
   }, [isMobile]);
 
@@ -25,9 +27,9 @@ function Skills() {
     <Box id="skills" sx={{ marginTop: '2rem' }}>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom sx={{ flexGrow: 1 }}>
-          Umiejętności
+        {t('umiejetnosci')}
         </Typography>
-        {!isMobile && ( // Ukrywamy przycisk na urządzeniach mobilnych
+        {!isMobile && ( 
           <IconButton
             onClick={handleToggle}
             aria-expanded={expanded}
