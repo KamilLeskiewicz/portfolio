@@ -1,7 +1,7 @@
 import React, { useState, useEffect, lazy } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline, Container } from "@mui/material";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/home/Header";
 import Chatbot from "./components/AI/Chatbot";
 import Valentine from "./views/V/V";
@@ -37,11 +37,13 @@ function App() {
     setDarkMode(!darkMode);
   };
 
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Router>
-        <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
+  function Layout() {
+    const location = useLocation();
+    const hideHeader = location.pathname === "/V2FsZW50eW5raQ==";
+
+    return (
+      <>
+        {!hideHeader && <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />}
         <Container maxWidth="lg" sx={{ marginTop: "100px" }}>
           <Routes>
             <Route
@@ -59,6 +61,15 @@ function App() {
             <Route path="/V2FsZW50eW5raQ==" element={<Valentine />} />
           </Routes>
         </Container>
+      </>
+    );
+  }
+
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router>
+        <Layout />
       </Router>
     </ThemeProvider>
   );
