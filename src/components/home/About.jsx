@@ -1,8 +1,12 @@
 import React from 'react';
 import { Typography, Paper, Grid } from '@mui/material';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+
+
 
 function About() {
+  const { t } = useTranslation();
   return (
     <div id="about">
       <motion.div
@@ -33,7 +37,7 @@ function About() {
               O mnie
             </Typography>
             <Typography variant="body1">
-              Jestem Kamil Leśkiewicz, pasjonatem programowania i technologii...
+              {t('AboutText')}
             </Typography>
           </Grid>
         </Grid>
