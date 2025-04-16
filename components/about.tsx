@@ -41,7 +41,7 @@ export default function About() {
         >
           <motion.div variants={itemVariants} className="relative">
             <div className="relative h-[400px] rounded-lg overflow-hidden">
-              <Image src="/placeholder-user.jpg" alt="Kamil Leśkiewicz" fill className="object-cover" />
+              <Image src="/about.JPEG" alt="Kamil Leśkiewicz" fill className="object-cover" />
             </div>
             <div className="absolute -bottom-4 -right-4 h-full w-full border-4 border-primary rounded-lg -z-10"></div>
           </motion.div>
@@ -62,6 +62,7 @@ export default function About() {
             I find myself perfectly in both teamwork and in independent implementation of projects. 
             I am open to new challenges and constantly strive to improve my skills.
             </motion.p>
+
 
           </div>
         </motion.div>
