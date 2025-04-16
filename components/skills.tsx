@@ -15,6 +15,7 @@ export default function Skills() {
     { name: "TypeScript", level: 80 },
     { name: "UI/UX Design", level: 70 },
     { name: "Python", level: 60 },
+    { name: "MongoDB", level: 90 },
     { name: "SQL", level: 90 },
     { name: "Postgress", level: 90 },
     { name: "Git", level: 80 },
