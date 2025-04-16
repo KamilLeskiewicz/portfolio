@@ -24,7 +24,7 @@ export default function Projects() {
     {
       title: "CardParty",
       description: "An interactive platform created for integration and spending time together playing card games. It has a card editor that allows you to create your own decks and define the rules of the game. The project is in the early stages of development, but has great potential for the future. It was a project for the Jumpstart EIT competition.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/cardparty.png",
       tags: ["React", "CSS", "JavaScript", "Rust"],
       liveUrl: "https://github.com/orgs/CardParty/repositories",
       githubUrl: "https://github.com/orgs/CardParty/repositories",

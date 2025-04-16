@@ -41,7 +41,7 @@ export default function About() {
         >
           <motion.div variants={itemVariants} className="relative">
             <div className="relative h-[400px] rounded-lg overflow-hidden">
-              <Image src="/placeholder.svg?height=800&width=600" alt="Jane Doe" fill className="object-cover" />
+              <Image src="/IMG_5497.JPEG" alt="Kamil Leśkiewicz" fill className="object-cover" />
             </div>
             <div className="absolute -bottom-4 -right-4 h-full w-full border-4 border-primary rounded-lg -z-10"></div>
           </motion.div>
