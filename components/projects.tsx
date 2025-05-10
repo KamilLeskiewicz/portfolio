@@ -18,7 +18,7 @@ export default function Projects() {
       description: "I am a young, ambitious, learning programmer with passion and solid technical knowledge. I specialize in Web Development, I have full-stack skills and I am constantly developing my competences in this direction. I find myself perfectly in both teamwork and in independent implementation of projects. I am open to new challenges and constantly strive to improve my skills. I am a full-stack working for RedSteel.",
       image: "/json.webp",
       tags: ["React", "JavaScript", "CSS", "MongoDB"],
-      liveUrl: "#",
+      liveUrl: "https://json.ewilanow.pl/",
       githubUrl: "https://github.com/SmoczaSkala/schoolNotes",
     },
     {
