@@ -16,8 +16,9 @@ export default function Projects() {
     {
       title: "JSON reader",
       description: "I am a young, ambitious, learning programmer with passion and solid technical knowledge. I specialize in Web Development, I have full-stack skills and I am constantly developing my competences in this direction. I find myself perfectly in both teamwork and in independent implementation of projects. I am open to new challenges and constantly strive to improve my skills. I am a full-stack working for RedSteel.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/json.webp",
       tags: ["React", "JavaScript", "CSS", "MongoDB"],
+      liveUrl: "#",
       githubUrl: "https://github.com/SmoczaSkala/schoolNotes",
     },
     {
@@ -25,13 +26,15 @@ export default function Projects() {
       description: "An interactive platform created for integration and spending time together playing card games. It has a card editor that allows you to create your own decks and define the rules of the game. The project is in the early stages of development, but has great potential for the future. It was a project for the Jumpstart EIT competition.",
       image: "/cardparty.png",
       tags: ["React", "CSS", "JavaScript", "Rust"],
+      liveUrl: "#",
       githubUrl: "https://github.com/orgs/CardParty/repositories",
     },
     {
       title: "Wheather App",
       description: "A simple mobile weather app that shows detailed information about the location entered by the user.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/wheather.jpg",
       tags: ["ReactNative", "TypeScript", "JavaScript"],
+      liveUrl: "#",
       githubUrl: "https://github.com/KamilLeskiewicz/Pogodynka",
     },
     {
