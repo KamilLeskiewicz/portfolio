@@ -121,13 +121,13 @@ function ProjectCard({ project }: { project: any }) {
 
         <div className="flex gap-3 mt-auto">
           <Button size="sm" variant="outline" asChild>
-            <Link href={project.githubUrl} className="flex items-center gap-1">
+            <Link href={project.githubUrl} target="_blank" className="flex items-center gap-1">
               <Github className="h-4 w-4" />
               Code
             </Link>
           </Button>
           <Button size="sm" asChild>
-            <Link href={project.liveUrl} className="flex items-center gap-1">
+            <Link href={project.liveUrl} target="_blank" className="flex items-center gap-1">
               <ExternalLink className="h-4 w-4" />
               Live Demo
             </Link>
