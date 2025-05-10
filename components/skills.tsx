@@ -12,6 +12,7 @@ export default function Skills() {
     { name: "JavaScript", level: 90 },
     { name: "React", level: 95 },
     { name: "Next.js", level: 95 },
+    { name: "ReactNative", level: 90},
     { name: "TypeScript", level: 80 },
     { name: "UI/UX Design", level: 70 },
     { name: "Python", level: 60 },
