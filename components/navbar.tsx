@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Menu, X, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/mode-toggle"
 import { useMobile } from "@/hooks/use-mobile"
@@ -49,8 +49,6 @@ export default function Navbar() {
           <Link href="/" className="text-xl font-bold">
             Kamil<span className="text-primary">Leśkiewicz</span>
           </Link>
-
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link, index) => (
               <Link key={index} href={link.href} className="text-sm font-medium hover:text-primary transition-colors">
@@ -60,9 +58,14 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-4">
+            <Button variant="outline" size="sm" className="hidden md:flex" asChild>
+              <a href="/kamil.pdf" download>
+                <FileText className="mr-2 h-4 w-4" />
+                Download CV
+              </a>
+            </Button>
             <ModeToggle />
 
-            {/* Mobile Menu Button */}
             <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMenu}>
               <Menu className="h-6 w-6" />
               <span className="sr-only">Toggle menu</span>
@@ -71,7 +74,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && isMobile && (
           <motion.div
@@ -99,6 +101,15 @@ export default function Navbar() {
                     {link.label}
                   </Link>
                 ))}
+                <a
+                  href="/cv.pdf"
+                  download
+                  className="text-lg font-medium py-2 hover:text-primary transition-colors flex items-center"
+                  onClick={toggleMenu}
+                >
+                  <FileText className="mr-2 h-5 w-5" />
+                  Download CV
+                </a>
               </nav>
             </div>
           </motion.div>
