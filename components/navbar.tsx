@@ -59,7 +59,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4">
             <Button variant="outline" size="sm" className="hidden md:flex" asChild>
-              <a href="/kamil.pdf" download>
+              <a href="/Kamil.pdf" download>
                 <FileText className="mr-2 h-4 w-4" />
                 Download CV
               </a>
@@ -102,7 +102,7 @@ export default function Navbar() {
                   </Link>
                 ))}
                 <a
-                  href="/cv.pdf"
+                  href="/Kamil.pdf"
                   download
                   className="text-lg font-medium py-2 hover:text-primary transition-colors flex items-center"
                   onClick={toggleMenu}
