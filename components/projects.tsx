@@ -32,7 +32,7 @@ export default function Projects() {
     {
       title: "Weather App",
       description: "A simple mobile weather app that shows detailed information about the location entered by the user.",
-      image: "/wheather.jpg",
+      image: "/weather.jpg",
       tags: ["ReactNative", "TypeScript", "JavaScript", "swift", "xCode", "expo"],
       liveUrl: "#",
       githubUrl: "https://github.com/KamilLeskiewicz/Pogodynka",
