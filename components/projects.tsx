@@ -15,7 +15,7 @@ export default function Projects() {
   const projects = [
     {
       title: "JSON reader",
-      description: "I am a young, ambitious, learning programmer with passion and solid technical knowledge. I specialize in Web Development, I have full-stack skills and I am constantly developing my competences in this direction. I find myself perfectly in both teamwork and in independent implementation of projects. I am open to new challenges and constantly strive to improve my skills. I am a full-stack working for RedSteel.",
+      description: "An application that allows easy viewing of data in JSON format, sent from the backend. The tool effectively presents content in the form of lesson notes on the page, making them easier to read and organize.",
       image: "/json.webp",
       tags: ["React", "JavaScript", "CSS", "MongoDB"],
       liveUrl: "https://json.ewilanow.pl/",
