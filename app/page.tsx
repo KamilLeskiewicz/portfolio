@@ -4,6 +4,7 @@ import Skills from "@/components/skills";
 import Projects from "@/components/projects";
 import Contact from "@/components/contact";
 import ScrollToTop from "@/components/scroll-to-top";
+import Roadmap from '../components/Roadmap';
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <link rel="icon" href="/Logo.png" sizes="any" />
       <Hero />
       <About />
+      <Roadmap />
       <Skills />
       <Projects />
       <Contact />

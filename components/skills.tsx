@@ -8,19 +8,18 @@ export default function Skills() {
   const isInView = useInView(ref, { once: true, amount: 0.2 })
 
   const skills = [
-    { name: "HTML & CSS", level: 100 },
+    { name: "HTML & CSS", level: 90 },
     { name: "JavaScript", level: 90 },
-    { name: "React", level: 95 },
-    { name: "Next.js", level: 95 },
+    { name: "React", level: 90 },
+    { name: "Next.js", level: 90 },
     { name: "ReactNative", level: 90},
-    { name: "TypeScript", level: 80 },
-    { name: "UI/UX Design", level: 70 },
+    { name: "TypeScript", level: 75 },
+    { name: "UI/UX Design", level: 50 },
     { name: "Python", level: 60 },
     { name: "MongoDB", level: 90 },
-    { name: "SQL", level: 90 },
-    { name: "Postgress", level: 90 },
+    { name: "SQL", level: 85 },
+    { name: "Postgress", level: 85 },
     { name: "Git", level: 80 },
-    { name: "Linux", level: 70 },
   ]
 
   const containerVariants = {
