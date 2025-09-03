@@ -40,7 +40,7 @@ export default function Projects() {
     {
       title: "Currently working!",
       description: "Something big is coming",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/white.png",
       tags: ["Next.js", "Payload", "Shardcn", "Tailwind CSS", "TypeScript"],
       liveUrl: "#",
       githubUrl: "#",
