@@ -3,8 +3,6 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { FileText } from "lucide-react"
 
 export default function About() {
   const ref = useRef(null)
@@ -41,7 +39,13 @@ export default function About() {
         >
           <motion.div variants={itemVariants} className="relative">
             <div className="relative h-[400px] rounded-lg overflow-hidden">
-              <Image src="/about.JPEG" alt="Kamil Leśkiewicz" fill className="object-cover" />
+              <Image 
+                src="/about.JPEG" 
+                alt="Kamil Leśkiewicz - Programista Fullstack i Web Developer" 
+                fill 
+                className="object-cover"
+                priority
+              />
             </div>
             <div className="absolute -bottom-4 -right-4 h-full w-full border-4 border-primary rounded-lg -z-10"></div>
           </motion.div>

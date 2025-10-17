@@ -27,7 +27,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          Hi, I'm <span className="text-primary">Kamil</span>
+          Hi, I'm <span className="text-primary">Kamil Leśkiewicz</span>
         </motion.h1>
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1 }}>
           <h2 className="text-2xl md:text-3xl mb-8 text-muted-foreground">

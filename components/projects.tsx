@@ -17,6 +17,7 @@ export default function Projects() {
       title: "JSON reader",
       description: "An application that allows easy viewing of data in JSON format, sent from the backend. The tool effectively presents content in the form of lesson notes on the page, making them easier to read and organize.",
       image: "/json.webp",
+      altText: "JSON Reader - projekt Kamila Leśkiewicza",
       tags: ["React", "JavaScript", "CSS", "MongoDB"],
       liveUrl: "https://json.ewilanow.pl/",
       githubUrl: "https://github.com/SmoczaSkala/schoolNotes",
@@ -25,6 +26,7 @@ export default function Projects() {
       title: "CardParty",
       description: "An interactive platform created for integration and spending time together playing card games. It has a card editor that allows you to create your own decks and define the rules of the game. The project is in the early stages of development, but has great potential for the future. It was a project for the Jumpstart EIT competition.",
       image: "/cardparty.png",
+      altText: "CardParty - aplikacja z udziałem Kamila Leśkiewicza",
       tags: ["React", "CSS", "JavaScript", "Rust"],
       liveUrl: "#",
       githubUrl: "https://github.com/orgs/CardParty/repositories",
@@ -33,6 +35,7 @@ export default function Projects() {
       title: "Weather App",
       description: "A simple mobile weather app that shows detailed information about the location entered by the user.",
       image: "/weather.jpg",
+      altText: "Weather App - aplikacja pogodowa Kamil Leśkiewicz",
       tags: ["ReactNative", "TypeScript", "JavaScript", "swift", "xCode", "expo"],
       liveUrl: "#",
       githubUrl: "https://github.com/KamilLeskiewicz/Pogodynka",
@@ -41,6 +44,7 @@ export default function Projects() {
       title: "Currently working!",
       description: "Something big is coming",
       image: "/white.png",
+      altText: "Nadchodzący projekt - Kamil Leśkiewicz programista",
       tags: ["Next.js", "Payload", "Shardcn", "Tailwind CSS", "TypeScript"],
       liveUrl: "#",
       githubUrl: "#",
@@ -102,7 +106,7 @@ function ProjectCard({ project }: { project: any }) {
       <div className="relative h-48 overflow-hidden">
         <Image
           src={project.image || "/placeholder.svg"}
-          alt={project.title}
+          alt={project.altText || project.title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
