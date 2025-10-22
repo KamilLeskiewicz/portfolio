@@ -1,30 +1,32 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
-import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ExternalLink, Github } from "lucide-react"
-import Link from "next/link"
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ExternalLink, Github } from "lucide-react";
+import Link from "next/link";
 
 export default function Projects() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.1 })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   const projects = [
     {
       title: "JSON reader",
-      description: "An application that allows easy viewing of data in JSON format, sent from the backend. The tool effectively presents content in the form of lesson notes on the page, making them easier to read and organize.",
+      description:
+        "An application that allows easy viewing of data in JSON format, sent from the backend. The tool effectively presents content in the form of lesson notes on the page, making them easier to read and organize.",
       image: "/json.webp",
       altText: "JSON Reader - projekt Kamila Leśkiewicza",
       tags: ["React", "JavaScript", "CSS", "MongoDB"],
-      liveUrl: "https://json.ewilanow.pl/",
+      liveUrl: "#",
       githubUrl: "https://github.com/SmoczaSkala/schoolNotes",
     },
     {
       title: "CardParty",
-      description: "An interactive platform created for integration and spending time together playing card games. It has a card editor that allows you to create your own decks and define the rules of the game. The project is in the early stages of development, but has great potential for the future. It was a project for the Jumpstart EIT competition.",
+      description:
+        "An interactive platform created for integration and spending time together playing card games. It has a card editor that allows you to create your own decks and define the rules of the game. The project is in the early stages of development, but has great potential for the future. It was a project for the Jumpstart EIT competition.",
       image: "/cardparty.png",
       altText: "CardParty - aplikacja z udziałem Kamila Leśkiewicza",
       tags: ["React", "CSS", "JavaScript", "Rust"],
@@ -33,10 +35,18 @@ export default function Projects() {
     },
     {
       title: "Weather App",
-      description: "A simple mobile weather app that shows detailed information about the location entered by the user.",
+      description:
+        "A simple mobile weather app that shows detailed information about the location entered by the user.",
       image: "/weather.jpg",
       altText: "Weather App - aplikacja pogodowa Kamil Leśkiewicz",
-      tags: ["ReactNative", "TypeScript", "JavaScript", "swift", "xCode", "expo"],
+      tags: [
+        "ReactNative",
+        "TypeScript",
+        "JavaScript",
+        "swift",
+        "xCode",
+        "expo",
+      ],
       liveUrl: "#",
       githubUrl: "https://github.com/KamilLeskiewicz/Pogodynka",
     },
@@ -49,7 +59,7 @@ export default function Projects() {
       liveUrl: "#",
       githubUrl: "#",
     },
-  ]
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -59,7 +69,7 @@ export default function Projects() {
         staggerChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -68,7 +78,7 @@ export default function Projects() {
       y: 0,
       transition: { duration: 0.6 },
     },
-  }
+  };
 
   return (
     <section id="projects" className="py-20 px-4 bg-muted/30">
@@ -97,7 +107,7 @@ export default function Projects() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
 
 function ProjectCard({ project }: { project: any }) {
@@ -113,11 +123,16 @@ function ProjectCard({ project }: { project: any }) {
       </div>
       <CardContent className="p-6 flex-1 flex flex-col">
         <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-        <p className="text-muted-foreground mb-4 flex-1">{project.description}</p>
+        <p className="text-muted-foreground mb-4 flex-1">
+          {project.description}
+        </p>
 
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tags.map((tag: string, i: number) => (
-            <span key={i} className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">
+            <span
+              key={i}
+              className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full"
+            >
               {tag}
             </span>
           ))}
@@ -125,13 +140,21 @@ function ProjectCard({ project }: { project: any }) {
 
         <div className="flex gap-3 mt-auto">
           <Button size="sm" variant="outline" asChild>
-            <Link href={project.githubUrl} target="_blank" className="flex items-center gap-1">
+            <Link
+              href={project.githubUrl}
+              target="_blank"
+              className="flex items-center gap-1"
+            >
               <Github className="h-4 w-4" />
               Code
             </Link>
           </Button>
           <Button size="sm" asChild>
-            <Link href={project.liveUrl} target="_blank" className="flex items-center gap-1">
+            <Link
+              href={project.liveUrl}
+              target="_blank"
+              className="flex items-center gap-1"
+            >
               <ExternalLink className="h-4 w-4" />
               Live Demo
             </Link>
@@ -139,5 +162,5 @@ function ProjectCard({ project }: { project: any }) {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
