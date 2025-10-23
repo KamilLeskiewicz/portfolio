@@ -13,14 +13,12 @@ export default function Projects() {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   const projects = [
-    {
+        {
       title: "JSON reader",
-      description:
-        "An application that allows easy viewing of data in JSON format, sent from the backend. The tool effectively presents content in the form of lesson notes on the page, making them easier to read and organize.",
+      description: "An application that allows easy viewing of data in JSON format, sent from the backend. The tool effectively presents content in the form of lesson notes on the page, making them easier to read and organize.",
       image: "/json.webp",
       altText: "JSON Reader - projekt Kamila Leśkiewicza",
       tags: ["React", "JavaScript", "CSS", "MongoDB"],
-      liveUrl: "#",
       githubUrl: "https://github.com/SmoczaSkala/schoolNotes",
     },
     {
@@ -30,7 +28,6 @@ export default function Projects() {
       image: "/cardparty.png",
       altText: "CardParty - aplikacja z udziałem Kamila Leśkiewicza",
       tags: ["React", "CSS", "JavaScript", "Rust"],
-      liveUrl: "#",
       githubUrl: "https://github.com/orgs/CardParty/repositories",
     },
     {
@@ -47,7 +44,6 @@ export default function Projects() {
         "xCode",
         "expo",
       ],
-      liveUrl: "#",
       githubUrl: "https://github.com/KamilLeskiewicz/Pogodynka",
     },
     {
@@ -56,8 +52,6 @@ export default function Projects() {
       image: "/white.png",
       altText: "Nadchodzący projekt - Kamil Leśkiewicz programista",
       tags: ["Next.js", "Payload", "Shardcn", "Tailwind CSS", "TypeScript"],
-      liveUrl: "#",
-      githubUrl: "#",
     },
   ];
 
@@ -139,26 +133,30 @@ function ProjectCard({ project }: { project: any }) {
         </div>
 
         <div className="flex gap-3 mt-auto">
-          <Button size="sm" variant="outline" asChild>
-            <Link
-              href={project.githubUrl}
-              target="_blank"
-              className="flex items-center gap-1"
-            >
-              <Github className="h-4 w-4" />
-              Code
-            </Link>
-          </Button>
-          <Button size="sm" asChild>
-            <Link
-              href={project.liveUrl}
-              target="_blank"
-              className="flex items-center gap-1"
-            >
-              <ExternalLink className="h-4 w-4" />
-              Live Demo
-            </Link>
-          </Button>
+          {project.githubUrl && (
+            <Button size="sm" variant="outline" asChild>
+              <Link
+                href={project.githubUrl}
+                target="_blank"
+                className="flex items-center gap-1"
+              >
+                <Github className="h-4 w-4" />
+                Code
+              </Link>
+            </Button>
+          )}
+          {project.liveUrl && (
+            <Button size="sm" asChild>
+              <Link
+                href={project.liveUrl}
+                target="_blank"
+                className="flex items-center gap-1"
+              >
+                <ExternalLink className="h-4 w-4" />
+                Live Demo
+              </Link>
+            </Button>
+          )}
         </div>
       </CardContent>
     </Card>

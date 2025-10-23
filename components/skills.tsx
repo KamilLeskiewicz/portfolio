@@ -8,18 +8,66 @@ export default function Skills() {
   const isInView = useInView(ref, { once: true, amount: 0.2 })
 
   const skills = [
-    { name: "HTML & CSS", level: 90 },
-    { name: "JavaScript", level: 90 },
-    { name: "React", level: 90 },
-    { name: "Next.js", level: 90 },
-    { name: "ReactNative", level: 90},
-    { name: "TypeScript", level: 75 },
-    { name: "UI/UX Design", level: 50 },
-    { name: "Python", level: 60 },
-    { name: "MongoDB", level: 90 },
-    { name: "SQL", level: 85 },
-    { name: "Postgress", level: 85 },
-    { name: "Git", level: 80 },
+    { 
+      name: "HTML & CSS", 
+      icon: "🎨",
+      color: "from-orange-500 to-pink-500"
+    },
+    { 
+      name: "JavaScript", 
+      icon: "⚡",
+      color: "from-yellow-400 to-yellow-600"
+    },
+    { 
+      name: "React", 
+      icon: "⚛️",
+      color: "from-cyan-400 to-blue-500"
+    },
+    { 
+      name: "Next.js", 
+      icon: "▲",
+      color: "from-gray-700 to-gray-900"
+    },
+    { 
+      name: "React Native", 
+      icon: "📱",
+      color: "from-blue-400 to-purple-500"
+    },
+    { 
+      name: "TypeScript", 
+      icon: "🔷",
+      color: "from-blue-500 to-blue-700"
+    },
+    { 
+      name: "UI/UX Design", 
+      icon: "🎭",
+      color: "from-purple-400 to-pink-500"
+    },
+    { 
+      name: "Python", 
+      icon: "🐍",
+      color: "from-blue-600 to-yellow-400"
+    },
+    { 
+      name: "MongoDB", 
+      icon: "🍃",
+      color: "from-green-500 to-green-700"
+    },
+    { 
+      name: "SQL", 
+      icon: "🗄️",
+      color: "from-blue-400 to-indigo-600"
+    },
+    { 
+      name: "PostgreSQL", 
+      icon: "🐘",
+      color: "from-blue-500 to-blue-800"
+    },
+    { 
+      name: "Git", 
+      icon: "🔀",
+      color: "from-orange-600 to-red-600"
+    },
   ]
 
   const containerVariants = {
@@ -43,14 +91,14 @@ export default function Skills() {
 
   return (
     <section id="skills" className="py-20 px-4">
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-6xl">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
           className="text-3xl font-bold mb-12 text-center"
         >
-          My Skills
+          Umiejętności - Kamil Leśkiewicz
         </motion.h2>
 
         <motion.div
@@ -58,21 +106,37 @@ export default function Skills() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="space-y-6"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
         >
           {skills.map((skill, index) => (
-            <motion.div key={index} variants={itemVariants}>
-              <div className="flex justify-between mb-2">
-                <span className="font-medium">{skill.name}</span>
-                <span>{skill.level}%</span>
-              </div>
-              <div className="h-3 w-full bg-muted rounded-full overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-                  transition={{ duration: 1, delay: 0.3 + index * 0.1 }}
-                  className="h-full bg-primary rounded-full"
-                ></motion.div>
+            <motion.div 
+              key={index} 
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, y: -5 }}
+              className="group"
+            >
+              <div className="relative p-6 rounded-xl bg-gradient-to-br from-muted/50 to-muted border border-border hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-lg">
+                <div className="flex flex-col items-center text-center space-y-3">
+                  <motion.div 
+                    className={`text-5xl mb-2 bg-gradient-to-br ${skill.color} bg-clip-text`}
+                    animate={isInView ? { 
+                      scale: [1, 1.2, 1],
+                      rotate: [0, 10, -10, 0]
+                    } : {}}
+                    transition={{ 
+                      duration: 0.6, 
+                      delay: 0.1 + index * 0.05,
+                      scale: { duration: 0.4 }
+                    }}
+                  >
+                    {skill.icon}
+                  </motion.div>
+                  <h3 className="font-semibold text-sm md:text-base group-hover:text-primary transition-colors">
+                    {skill.name}
+                  </h3>
+                </div>
+                
+                <div className={`absolute inset-0 rounded-xl bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none`}></div>
               </div>
             </motion.div>
           ))}
