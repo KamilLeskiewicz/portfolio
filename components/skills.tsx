@@ -98,7 +98,7 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           className="text-3xl font-bold mb-12 text-center"
         >
-          Umiejętności - Kamil Leśkiewicz
+          Skills
         </motion.h2>
 
         <motion.div
