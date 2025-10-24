@@ -15,8 +15,18 @@ export default function Skills() {
     },
     { 
       name: "JavaScript", 
-      icon: "⚡",
+      icon: "💛",
       color: "from-yellow-400 to-yellow-600"
+    },
+    { 
+      name: "TypeScript", 
+      icon: "🔷",
+      color: "from-blue-500 to-blue-700"
+    },
+    {
+      name: "Tailwind CSS",
+      icon: "🌊",
+      color: "from-sky-400 to-blue-600"
     },
     { 
       name: "React", 
@@ -34,19 +44,14 @@ export default function Skills() {
       color: "from-blue-400 to-purple-500"
     },
     { 
-      name: "TypeScript", 
-      icon: "🔷",
-      color: "from-blue-500 to-blue-700"
-    },
-    { 
-      name: "UI/UX Design", 
-      icon: "🎭",
-      color: "from-purple-400 to-pink-500"
-    },
-    { 
       name: "Python", 
       icon: "🐍",
       color: "from-blue-600 to-yellow-400"
+    },
+    {
+      name: "Payload CMS",
+      icon: "📦",
+      color: "from-gray-600 to-gray-800"
     },
     { 
       name: "MongoDB", 
@@ -54,19 +59,34 @@ export default function Skills() {
       color: "from-green-500 to-green-700"
     },
     { 
-      name: "SQL", 
-      icon: "🗄️",
-      color: "from-blue-400 to-indigo-600"
-    },
-    { 
       name: "PostgreSQL", 
       icon: "🐘",
       color: "from-blue-500 to-blue-800"
     },
     { 
+      name: "SQL", 
+      icon: "💾",
+      color: "from-blue-400 to-indigo-600"
+    },
+    { 
       name: "Git", 
-      icon: "🔀",
+      icon: "🌿",
       color: "from-orange-600 to-red-600"
+    },
+    {
+      name: "Docker",
+      icon: "🐳",
+      color: "from-blue-400 to-cyan-600"
+    },
+    {
+      name: "Figma",
+      icon: "✨",
+      color: "from-pink-400 to-purple-600"
+    },
+    { 
+      name: "UI/UX Design", 
+      icon: "🎯",
+      color: "from-purple-400 to-pink-500"
     },
   ]
 
