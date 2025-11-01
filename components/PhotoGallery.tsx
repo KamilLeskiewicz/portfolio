@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { useImageProtection } from "@/hooks/useImageProtection";
 
 interface Photo {
   src: string;
@@ -22,6 +23,7 @@ interface Event {
 }
 
 export default function PhotoGallery() {
+  useImageProtection();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
@@ -60,6 +62,11 @@ export default function PhotoGallery() {
         },
         {
           src: "/gallery/hackathon2025(4).jpg",
+          alt: "Project presentation",
+          caption: "Project presentation",
+        },
+        {
+          src: "/gallery/hackathon2025(5).jpg",
           alt: "Project presentation",
           caption: "Project presentation",
         },
@@ -221,8 +228,9 @@ export default function PhotoGallery() {
                       <motion.div
                         key={photoIndex}
                         variants={photoVariants}
-                        className="group relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer"
-                        onClick={() => handlePhotoClick(photo, photoIndex, event.photos)}
+                        className="group relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer select-none"
+                        onContextMenu={(e) => e.preventDefault()}
+                        onDragStart={(e) => e.preventDefault()}
                       >
                         {!loadedImages.has(photo.src) && (
                           <Skeleton className="absolute inset-0 z-10" />
@@ -231,10 +239,17 @@ export default function PhotoGallery() {
                           src={photo.src}
                           alt={photo.alt}
                           fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                          className="object-cover transition-transform duration-500 group-hover:scale-110 select-none"
                           onLoad={() => handleImageLoad(photo.src)}
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
                         />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end">
+                        <div 
+                          className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end z-20"
+                          onClick={() => handlePhotoClick(photo, photoIndex, event.photos)}
+                          onContextMenu={(e) => e.preventDefault()}
+                          onDragStart={(e) => e.preventDefault()}
+                        >
                           <div className="p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-full">
                             {photo.caption && (
                               <p className="text-sm font-medium">{photo.caption}</p>
@@ -296,8 +311,9 @@ export default function PhotoGallery() {
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
                 exit={{ scale: 0.8 }}
-                className="relative max-w-6xl max-h-[90vh] w-full h-full flex flex-col items-center justify-center"
+                className="relative max-w-6xl max-h-[90vh] w-full h-full flex flex-col items-center justify-center select-none"
                 onClick={(e) => e.stopPropagation()}
+                onContextMenu={(e) => e.preventDefault()}
               >
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Image
@@ -305,8 +321,15 @@ export default function PhotoGallery() {
                     alt={selectedPhoto.photo.alt}
                     width={1920}
                     height={1080}
-                    className="object-contain max-h-[80vh] w-auto h-auto"
+                    className="object-contain max-h-[80vh] w-auto h-auto select-none"
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
                   />
+                  <div 
+                    className="absolute inset-0 z-10"
+                    onContextMenu={(e) => e.preventDefault()}
+                    onDragStart={(e) => e.preventDefault()}
+                  ></div>
                 </div>
                 {selectedPhoto.photo.caption && (
                   <p className="text-white text-center mt-4 text-lg">
