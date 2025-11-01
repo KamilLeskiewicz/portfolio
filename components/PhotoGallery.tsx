@@ -230,7 +230,7 @@ export default function PhotoGallery() {
   };
 
   return (
-    <section id="gallery" className="py-20 px-4 bg-background">
+    <section id="gallery" className="py-12 sm:py-16 md:py-20 px-4 bg-background">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -240,10 +240,10 @@ export default function PhotoGallery() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-3xl font-bold mb-4">Photo Gallery</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Photo Gallery</h2>
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4">
             Moments captured from hackathons, conferences, and learning experiences - Kamil Leśkiewicz portfolio
           </p>
         </motion.div>
@@ -252,7 +252,7 @@ export default function PhotoGallery() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 px-2"
         >
           <Button
             variant={selectedEvent === null ? "default" : "outline"}
@@ -283,18 +283,18 @@ export default function PhotoGallery() {
           {displayedEvents.map((event, eventIndex) => (
             <motion.div key={event.name} variants={itemVariants}>
               <Card className="overflow-hidden">
-                <CardContent className="p-6 md:p-8">
-                  <div className="mb-6">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-2xl font-bold">{event.name}</h3>
-                      <span className="text-sm text-muted-foreground">
+                <CardContent className="p-4 sm:p-6 md:p-8">
+                  <div className="mb-4 sm:mb-6">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 gap-2">
+                      <h3 className="text-xl sm:text-2xl font-bold">{event.name}</h3>
+                      <span className="text-xs sm:text-sm text-muted-foreground">
                         {event.date}
                       </span>
                     </div>
-                    <p className="text-muted-foreground">{event.description}</p>
+                    <p className="text-sm sm:text-base text-muted-foreground">{event.description}</p>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                     {event.photos.map((photo, photoIndex) => (
                       <motion.div
                         key={photoIndex}
@@ -339,47 +339,47 @@ export default function PhotoGallery() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-2 sm:p-4"
               onClick={() => setSelectedPhoto(null)}
             >
               <Button
                 variant="ghost"
                 size="icon"
-                className="absolute top-4 right-4 text-white hover:bg-white/20"
+                className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white hover:bg-white/20 z-10"
                 onClick={() => setSelectedPhoto(null)}
               >
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5 sm:h-6 sm:w-6" />
               </Button>
 
               <Button
                 variant="ghost"
                 size="icon"
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20"
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 z-10"
                 onClick={(e) => {
                   e.stopPropagation();
                   handlePrevPhoto();
                 }}
               >
-                <ChevronLeft className="h-8 w-8" />
+                <ChevronLeft className="h-6 w-6 sm:h-8 sm:w-8" />
               </Button>
 
               <Button
                 variant="ghost"
                 size="icon"
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20"
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 z-10"
                 onClick={(e) => {
                   e.stopPropagation();
                   handleNextPhoto();
                 }}
               >
-                <ChevronRight className="h-8 w-8" />
+                <ChevronRight className="h-6 w-6 sm:h-8 sm:w-8" />
               </Button>
 
               <motion.div
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
                 exit={{ scale: 0.8 }}
-                className="relative max-w-6xl max-h-[90vh] w-full h-full flex flex-col items-center justify-center"
+                className="relative max-w-6xl max-h-[95vh] sm:max-h-[90vh] w-full h-full flex flex-col items-center justify-center px-2"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="relative w-full h-full flex items-center justify-center">
@@ -388,18 +388,18 @@ export default function PhotoGallery() {
                     alt={selectedPhoto.photo.alt}
                     width={1920}
                     height={1080}
-                    className="object-contain max-h-[80vh] w-auto h-auto"
+                    className="object-contain max-h-[75vh] sm:max-h-[80vh] w-auto h-auto"
                     title={selectedPhoto.photo.seo?.title || selectedPhoto.photo.alt}
                     loading="eager"
                     priority
                   />
                 </div>
                 {selectedPhoto.photo.caption && (
-                  <p className="text-white text-center mt-4 text-lg">
+                  <p className="text-white text-center mt-3 sm:mt-4 text-sm sm:text-lg px-4">
                     {selectedPhoto.photo.caption}
                   </p>
                 )}
-                <p className="text-white/60 text-sm mt-2">
+                <p className="text-white/60 text-xs sm:text-sm mt-2">
                   {selectedPhoto.index + 1} / {selectedPhoto.eventPhotos.length}
                 </p>
               </motion.div>

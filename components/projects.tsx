@@ -82,13 +82,13 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-20 px-4 bg-muted/30">
+    <section id="projects" className="py-12 sm:py-16 md:py-20 px-4 bg-muted/30">
       <div className="container mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl font-bold mb-12 text-center"
+          className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12 text-center"
         >
           My Projects
         </motion.h2>
@@ -98,7 +98,7 @@ export default function Projects() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
           {projects.map((project, index) => (
             <motion.div key={index} variants={itemVariants}>
@@ -114,7 +114,7 @@ export default function Projects() {
 function ProjectCard({ project }: { project: any }) {
   return (
     <Card className="overflow-hidden group h-full flex flex-col">
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-40 sm:h-48 overflow-hidden">
         <Image
           src={project.image || "/placeholder.svg"}
           alt={project.altText || project.title}
@@ -125,9 +125,9 @@ function ProjectCard({ project }: { project: any }) {
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
       </div>
-      <CardContent className="p-6 flex-1 flex flex-col">
-        <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-        <p className="text-muted-foreground mb-4 flex-1">
+      <CardContent className="p-4 sm:p-6 flex-1 flex flex-col">
+        <h3 className="text-lg sm:text-xl font-bold mb-2">{project.title}</h3>
+        <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4 flex-1">
           {project.description}
         </p>
 

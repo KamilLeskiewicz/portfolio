@@ -20,17 +20,17 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+    <section className="relative h-screen flex flex-col items-center justify-center text-center px-3 sm:px-4 overflow-hidden">
       <Scene3D />
       
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="max-w-3xl mx-auto relative z-20"
+        className="max-w-3xl mx-auto relative z-20 -mt-24 sm:-mt-40 md:-mt-56 lg:-mt-72"
       >
         <motion.h1
-          className="text-4xl md:text-6xl font-bold mb-6"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 md:mb-6 px-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
@@ -38,29 +38,16 @@ export default function Hero() {
           Hi, I'm <span className="text-primary">Kamil Leśkiewicz</span>
         </motion.h1>
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1 }}>
-          <h2 className="text-2xl md:text-3xl mb-8 text-muted-foreground">
+          <h2 className="text-sm sm:text-base md:text-xl lg:text-2xl xl:text-3xl text-muted-foreground px-2">
             <TypedText texts={["Fullstack Developer", "Web Developer", "Creative Thinker"]} />
           </h2>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <Button size="lg" asChild>
-            <Link href="#projects">View My Work</Link>
-          </Button>
-          <Button size="lg" variant="outline" asChild>
-            <Link href="#contact">Contact Me</Link>
-          </Button>
         </motion.div>
       </motion.div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 2 }}
-        className="absolute bottom-10 z-20"
+        className="absolute bottom-4 sm:bottom-10 z-20"
       >
         <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}>
           <Link href="#about">

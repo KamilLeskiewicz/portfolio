@@ -104,13 +104,13 @@ const Roadmap: React.FC = () => {
   };
 
   return (
-    <section id="roadmap" className="py-16 bg-muted/30 text-foreground">
+    <section id="roadmap" className="py-12 sm:py-16 bg-muted/30 text-foreground">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl font-bold text-center mb-12"
+          className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12"
         >
           My Journey
         </motion.h2>
@@ -119,22 +119,22 @@ const Roadmap: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="relative wrap overflow-hidden p-10 h-full"
+          className="relative wrap overflow-hidden p-4 sm:p-6 md:p-10 h-full"
         >
-          <div className="border-2-2 absolute left-1/2 border-opacity-20 border-primary h-full border"></div>
+          <div className="hidden md:block border-2-2 absolute left-1/2 border-opacity-20 border-primary h-full border"></div>
 
           {[...roadmapData].reverse().map((item, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className={`mb-8 flex justify-between items-center w-full ${
+              className={`mb-6 sm:mb-8 flex flex-col md:flex-row justify-between items-center w-full ${
                 index % 2 === 0
-                  ? "flex-row-reverse left-timeline"
-                  : "right-timeline"
+                  ? "md:flex-row-reverse left-timeline"
+                  : "md:right-timeline"
               }`}
             >
-              <div className="order-1 w-5/12"></div>
-              <div className="z-20 flex items-center order-1 bg-primary shadow-xl w-10 h-10 rounded-full">
+              <div className="hidden md:block order-1 w-5/12"></div>
+              <div className="z-20 flex items-center order-1 md:order-1 bg-primary shadow-xl w-10 h-10 rounded-full mb-4 md:mb-0">
                 {item.type === "work" ? (
                   <Briefcase className="mx-auto h-5 w-5 text-primary-foreground" />
                 ) : (
@@ -143,26 +143,27 @@ const Roadmap: React.FC = () => {
               </div>
               <motion.div
                 onClick={() => toggleExpand(index)}
-                className={`order-1 w-5/12 px-6 py-4 bg-background rounded-lg shadow-xl text-card-foreground cursor-pointer hover:shadow-2xl transition-all duration-300 ${
+                className={`order-1 w-full md:w-5/12 px-4 sm:px-6 py-4 bg-background rounded-lg shadow-xl text-card-foreground cursor-pointer hover:shadow-2xl transition-all duration-300 ${
                   expandedIndex === index ? 'ring-2 ring-primary' : ''
                 }`}
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <time className="mb-1 text-sm font-normal leading-none text-muted-foreground">
+                <time className="mb-1 text-xs sm:text-sm font-normal leading-none text-muted-foreground">
                   {item.date}
                 </time>
-                <div className="flex items-center justify-between">
-                  <h3 className="mb-1 text-lg font-semibold">{item.title}</h3>
+                <div className="flex items-center justify-between gap-2">
+                  <h3 className="mb-1 text-base sm:text-lg font-semibold flex-1">{item.title}</h3>
                   <motion.div
                     animate={{ rotate: expandedIndex === index ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
+                    className="flex-shrink-0"
                   >
-                    <ChevronDown className="h-5 w-5 text-primary" />
+                    <ChevronDown className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                   </motion.div>
                 </div>
-                <h4 className="mb-2 text-md font-medium text-primary">{item.subtitle}</h4>
-                <p className="text-sm font-normal text-muted-foreground mb-2">
+                <h4 className="mb-2 text-sm sm:text-md font-medium text-primary">{item.subtitle}</h4>
+                <p className="text-xs sm:text-sm font-normal text-muted-foreground mb-2">
                   {item.description}
                 </p>
 
@@ -175,16 +176,16 @@ const Roadmap: React.FC = () => {
                       transition={{ duration: 0.3 }}
                       className="mt-4 pt-4 border-t border-border"
                     >
-                      <ul className="space-y-2">
+                      <ul className="space-y-1.5 sm:space-y-2">
                         {item.details.map((detail, detailIndex) => (
                           <motion.li
                             key={detailIndex}
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: detailIndex * 0.05 }}
-                            className="flex items-start gap-2 text-sm"
+                            className="flex items-start gap-2 text-xs sm:text-sm"
                           >
-                            <span className="text-primary mt-1">•</span>
+                            <span className="text-primary mt-0.5 sm:mt-1 flex-shrink-0">•</span>
                             <span>{detail}</span>
                           </motion.li>
                         ))}

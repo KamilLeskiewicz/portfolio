@@ -28,17 +28,17 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="py-20 px-4 bg-muted/30">
+    <section id="about" className="py-12 sm:py-16 md:py-20 px-4 bg-muted/30">
       <div className="container mx-auto">
         <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center"
         >
           <motion.div variants={itemVariants} className="relative">
-            <div className="relative h-[400px] rounded-lg overflow-hidden">
+            <div className="relative h-[250px] sm:h-[300px] md:h-[400px] rounded-lg overflow-hidden">
               <Image 
                 src="/about.JPEG" 
                 alt="Kamil Leśkiewicz - Fullstack Developer and Web Developer portfolio photo" 
@@ -54,17 +54,17 @@ export default function About() {
           </motion.div>
 
           <div>
-            <motion.h2 variants={itemVariants} className="text-3xl font-bold mb-6 inline-block relative">
+            <motion.h2 variants={itemVariants} className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 inline-block relative">
               About Me
               <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-primary"></span>
             </motion.h2>
 
-            <motion.p variants={itemVariants} className="text-lg mb-4">
+            <motion.p variants={itemVariants} className="text-base sm:text-lg mb-3 sm:mb-4">
             I am a young, ambitious programmer with passion and solid technical knowledge.
             I specialize in Web Development with full-stack skills and I am constantly expanding my competences in this direction. 
             </motion.p>
 
-            <motion.p variants={itemVariants} className="text-lg mb-6">
+            <motion.p variants={itemVariants} className="text-base sm:text-lg mb-4 sm:mb-6">
             I am a full-stack developer working at RedSteel.
             I excel in both teamwork and independent project implementation. 
             I am open to new challenges and constantly strive to improve my skills.

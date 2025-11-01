@@ -31,13 +31,13 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 px-4">
+    <section id="contact" className="py-12 sm:py-16 md:py-20 px-4">
       <div className="container mx-auto max-w-5xl">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl font-bold mb-12 text-center"
+          className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12 text-center"
         >
           Get In Touch
         </motion.h2>
@@ -47,35 +47,35 @@ export default function Contact() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12"
         >
-          <motion.div variants={itemVariants} className="space-y-6">
-            <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
+          <motion.div variants={itemVariants} className="space-y-4 sm:space-y-6">
+            <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Contact Information</h3>
 
-            <div className="flex items-start gap-4">
-              <div className="bg-primary/10 p-3 rounded-full text-primary">
-                <Mail className="h-5 w-5" />
+            <div className="flex items-start gap-3 sm:gap-4">
+              <div className="bg-primary/10 p-2.5 sm:p-3 rounded-full text-primary flex-shrink-0">
+                <Mail className="h-4 w-4 sm:h-5 sm:w-5" />
               </div>
               <div>
-                <h4 className="font-medium">Email</h4>
-                <p className="text-muted-foreground">kamil@leskiewicz.pl</p>
+                <h4 className="text-sm sm:text-base font-medium">Email</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground break-all">kamil@leskiewicz.pl</p>
               </div>
             </div>
 
 
-            <div className="flex items-start gap-4">
-              <div className="bg-primary/10 p-3 rounded-full text-primary">
-                <MapPin className="h-5 w-5" />
+            <div className="flex items-start gap-3 sm:gap-4">
+              <div className="bg-primary/10 p-2.5 sm:p-3 rounded-full text-primary flex-shrink-0">
+                <MapPin className="h-4 w-4 sm:h-5 sm:w-5" />
               </div>
               <div>
-                <h4 className="font-medium">Location</h4>
-                <p className="text-muted-foreground">Poland, Warsaw</p>
+                <h4 className="text-sm sm:text-base font-medium">Location</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground">Poland, Warsaw</p>
               </div>
             </div>
 
-            <div className="pt-6">
-              <h3 className="text-xl font-semibold mb-4">Follow Me</h3>
-              <div className="flex gap-4">
+            <div className="pt-4 sm:pt-6">
+              <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Follow Me</h3>
+              <div className="flex gap-3 sm:gap-4">
                 <a href="https://github.com/KamilLeskiewicz" target="_blank" rel="noopener noreferrer" className="bg-muted p-3 rounded-full hover:bg-primary hover:text-white transition-colors">
                   <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path

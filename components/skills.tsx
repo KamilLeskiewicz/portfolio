@@ -110,13 +110,13 @@ export default function Skills() {
   }
 
   return (
-    <section id="skills" className="py-20 px-4 bg-background">
+    <section id="skills" className="py-12 sm:py-16 md:py-20 px-4 bg-background">
       <div className="container mx-auto max-w-7xl">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl font-bold mb-12 text-center"
+          className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12 text-center"
         >
           Skills & Technologies
         </motion.h2>
@@ -126,7 +126,7 @@ export default function Skills() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3 md:gap-4"
         >
           {skills.map((skill, index) => {
             const isWide = index === 1 || index === 4;
@@ -144,12 +144,12 @@ export default function Skills() {
                   ''
                 }`}
               >
-                <div className={`relative h-full min-h-[120px] p-4 md:p-6 rounded-2xl bg-[#1a1f2e] border border-white/5 hover:border-primary/30 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-primary/20 ${
-                  isWide || isTall ? 'min-h-[140px]' : ''
+                <div className={`relative h-full min-h-[100px] sm:min-h-[120px] p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl bg-[#1a1f2e] border border-white/5 hover:border-primary/30 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-primary/20 ${
+                  isWide || isTall ? 'sm:min-h-[140px]' : ''
                 }`}>
-                  <div className="flex flex-col items-center justify-center text-center h-full space-y-2 md:space-y-3">
+                  <div className="flex flex-col items-center justify-center text-center h-full space-y-1.5 sm:space-y-2 md:space-y-3">
                     <motion.div 
-                      className={`${isWide || isTall ? 'text-5xl md:text-6xl' : 'text-4xl md:text-5xl'}`}
+                      className={`${isWide || isTall ? 'text-3xl sm:text-5xl md:text-6xl' : 'text-3xl sm:text-4xl md:text-5xl'}`}
                       animate={isInView ? { 
                         scale: [1, 1.1, 1],
                         rotate: [0, 5, -5, 0]
@@ -161,7 +161,7 @@ export default function Skills() {
                     >
                       {skill.icon}
                     </motion.div>
-                    <h3 className={`font-semibold ${isWide || isTall ? 'text-base md:text-lg' : 'text-xs md:text-sm'} text-white group-hover:text-primary transition-colors`}>
+                    <h3 className={`font-semibold ${isWide || isTall ? 'text-sm sm:text-base md:text-lg' : 'text-xs sm:text-sm md:text-sm'} text-white group-hover:text-primary transition-colors leading-tight`}>
                       {skill.name}
                     </h3>
                   </div>

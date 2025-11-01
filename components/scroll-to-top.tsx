@@ -36,10 +36,10 @@ export default function ScrollToTop() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.2 }}
-          className="fixed bottom-8 right-8 z-50"
+          className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50"
         >
-          <Button onClick={scrollToTop} size="icon" className="rounded-full shadow-lg">
-            <ArrowUp className="h-5 w-5" />
+          <Button onClick={scrollToTop} size="icon" className="rounded-full shadow-lg h-10 w-10 sm:h-12 sm:w-12">
+            <ArrowUp className="h-4 w-4 sm:h-5 sm:w-5" />
           </Button>
         </motion.div>
       )}

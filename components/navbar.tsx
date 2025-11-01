@@ -47,33 +47,33 @@ export default function Navbar() {
         isScrolled ? "bg-background/80 backdrop-blur-md shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-xl font-bold">
+      <div className="container mx-auto px-3 sm:px-4">
+        <div className="flex items-center justify-between h-14 sm:h-16">
+          <Link href="/" className="text-lg sm:text-xl font-bold">
             Kamil<span className="text-primary">Leśkiewicz</span>
           </Link>
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {navLinks.map((link, index) => (
-              <Link key={index} href={link.href} className="text-sm font-medium hover:text-primary transition-colors">
+              <Link key={index} href={link.href} className="text-xs sm:text-sm font-medium hover:text-primary transition-colors">
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <div className="hidden md:flex items-center gap-2">
               <CVPreview />
               <Button variant="outline" size="sm" asChild>
                 <a href="/Kamil.pdf" download>
                   <FileText className="mr-2 h-4 w-4" />
-                  Download
+                  <span className="hidden lg:inline">Download</span>
                 </a>
               </Button>
             </div>
             <ModeToggle />
 
             <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMenu}>
-              <Menu className="h-6 w-6" />
+              <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
               <span className="sr-only">Toggle menu</span>
             </Button>
           </div>

@@ -99,7 +99,7 @@ export default function Stats() {
   };
 
   return (
-    <section className="py-16 px-4 bg-muted/30 relative overflow-hidden">
+    <section className="py-12 sm:py-16 px-4 bg-muted/30 relative overflow-hidden">
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-10 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 right-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl"></div>
@@ -110,7 +110,7 @@ export default function Stats() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl font-bold text-center mb-12"
+          className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12"
         >
           Achievements & Milestones
         </motion.h2>
@@ -120,18 +120,18 @@ export default function Stats() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto"
         >
           {stats.map((stat, index) => (
             <motion.div key={index} variants={itemVariants} className="group">
-              <div className="relative p-6 rounded-2xl bg-background border border-border hover:border-primary/50 transition-all duration-300 shadow-lg hover:shadow-xl overflow-hidden">
+              <div className="relative p-4 sm:p-6 rounded-2xl bg-background border border-border hover:border-primary/50 transition-all duration-300 shadow-lg hover:shadow-xl overflow-hidden">
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
                 ></div>
 
-                <div className="relative z-10 flex flex-col items-center text-center space-y-4">
+                <div className="relative z-10 flex flex-col items-center text-center space-y-3 sm:space-y-4">
                   <motion.div
-                    className={`p-4 rounded-full bg-gradient-to-br ${stat.color} text-white shadow-lg`}
+                    className={`p-3 sm:p-4 rounded-full bg-gradient-to-br ${stat.color} text-white shadow-lg`}
                     animate={
                       isInView
                         ? {
@@ -148,13 +148,13 @@ export default function Stats() {
                     {stat.icon}
                   </motion.div>
 
-                  <div className="text-4xl font-bold bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
+                  <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
                     {stat.prefix}
                     <AnimatedNumber value={stat.value} duration={2} />
                     {stat.suffix}
                   </div>
 
-                  <p className="text-sm text-muted-foreground font-medium">
+                  <p className="text-xs sm:text-sm text-muted-foreground font-medium">
                     {stat.label}
                   </p>
                 </div>
@@ -169,11 +169,11 @@ export default function Stats() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-12 flex justify-center"
+          className="mt-8 sm:mt-12 flex justify-center px-4"
         >
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-background border border-border shadow-md">
-            <Award className="h-5 w-5 text-primary" />
-            <span className="text-sm font-medium">
+          <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-background border border-border shadow-md">
+            <Award className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
+            <span className="text-xs sm:text-sm font-medium text-center">
               🏆 2nd Place Winner - Hackathon Techni Schools Code Camp 2024
             </span>
           </div>
