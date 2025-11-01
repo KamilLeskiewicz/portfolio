@@ -1,20 +1,19 @@
 "use client";
 
 import Script from "next/script";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 export default function GoogleAnalytics({ measurementId }: { measurementId: string }) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production" && measurementId && typeof window !== "undefined" && (window as any).gtag) {
       (window as any).gtag("config", measurementId, {
-        page_path: pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : ""),
+        page_path: pathname + (window.location.search || ""),
       });
     }
-  }, [pathname, searchParams, measurementId]);
+  }, [pathname, measurementId]);
 
   if (process.env.NODE_ENV !== "production" || !measurementId) {
     return null;
@@ -35,7 +34,7 @@ export default function GoogleAnalytics({ measurementId }: { measurementId: stri
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${measurementId}', {
-              page_path: window.location.pathname,
+              page_path: window.location.pathname + window.location.search,
             });
           `,
         }}
