@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { ChevronDown, Briefcase, GraduationCap } from "lucide-react";
 
 interface TimelineItem {
   date: string;
   title: string;
   subtitle: string;
   description: string;
+  details?: string[];
   type: "work" | "education";
 }
 
@@ -18,15 +20,42 @@ const roadmapData: TimelineItem[] = [
     subtitle: "Giganci Programowania",
     description:
       "The beginning of my adventure in which I learned to code in Python, create games and websites.",
+    details: [
+      "Learned Python fundamentals and game development",
+      "Created first websites with HTML, CSS, and JavaScript",
+      "Developed small games and interactive projects",
+      "Built strong foundation in programming logic"
+    ],
     type: "education",
   },
-
   {
     date: "2022 - Present",
     title: "High School",
     subtitle: "Niepubliczne Technikum Programistyczne Techni Schools",
     description:
       "Place where I spread my wings and absorbed a lot of knowledge and practice.",
+    details: [
+      "Advanced programming courses in multiple languages",
+      "Team projects and collaborative development",
+      "Participation in tech competitions and hackathons",
+      "Hands-on experience with modern frameworks"
+    ],
+    type: "education",
+  },
+  {
+    date: "April 2024",
+    title: "Hackathon Technischools 2024",
+    subtitle: "2nd Place - Techni Schools Code Camp, Warsaw",
+    description:
+      "Our team 'cyk.pl' won 2nd place at the Code Camp! Under the theme 'Mental Support', we developed an AI-powered virtual psychologist built on the Bielik model.",
+    details: [
+      "🏆 Achieved 2nd place out of numerous competing teams",
+      "Built AI-powered mental support system using Bielik model",
+      "Implemented smart initial diagnosis algorithms",
+      "Created empathetic AI conversation flows",
+      "Integrated real-time human supervision features",
+      "24-hour intensive development sprint"
+    ],
     type: "education",
   },
   {
@@ -35,6 +64,13 @@ const roadmapData: TimelineItem[] = [
     subtitle: "RedSteel Company",
     description:
       "Working on exciting projects using Payload CMS, Next.js, and Node.js.",
+    details: [
+      "Developing full-stack applications with Next.js",
+      "Implementing Payload CMS for content management",
+      "Building RESTful APIs with Node.js and Express",
+      "Collaborating with cross-functional teams",
+      "Ensuring code quality and best practices"
+    ],
     type: "work",
   },
 ];
@@ -42,6 +78,7 @@ const roadmapData: TimelineItem[] = [
 const Roadmap: React.FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -60,6 +97,10 @@ const Roadmap: React.FC = () => {
       y: 0,
       transition: { duration: 0.6 },
     },
+  };
+
+  const toggleExpand = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
   };
 
   return (
@@ -93,21 +134,65 @@ const Roadmap: React.FC = () => {
               }`}
             >
               <div className="order-1 w-5/12"></div>
-              <div className="z-20 flex items-center order-1 bg-primary shadow-xl w-8 h-8 rounded-full">
-                <h1 className="mx-auto font-semibold text-lg text-primary-foreground">
-                  {index + 1}
-                </h1>
+              <div className="z-20 flex items-center order-1 bg-primary shadow-xl w-10 h-10 rounded-full">
+                {item.type === "work" ? (
+                  <Briefcase className="mx-auto h-5 w-5 text-primary-foreground" />
+                ) : (
+                  <GraduationCap className="mx-auto h-5 w-5 text-primary-foreground" />
+                )}
               </div>
-              <div className="order-1 w-5/12 px-6 py-4 bg-background rounded-lg shadow-xl text-card-foreground">
+              <motion.div
+                onClick={() => toggleExpand(index)}
+                className={`order-1 w-5/12 px-6 py-4 bg-background rounded-lg shadow-xl text-card-foreground cursor-pointer hover:shadow-2xl transition-all duration-300 ${
+                  expandedIndex === index ? 'ring-2 ring-primary' : ''
+                }`}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
                 <time className="mb-1 text-sm font-normal leading-none text-muted-foreground">
                   {item.date}
                 </time>
-                <h3 className="mb-1 text-lg font-semibold">{item.title}</h3>
-                <h4 className="mb-1 text-md font-medium">{item.subtitle}</h4>
-                <p className="text-base font-normal text-muted-foreground">
+                <div className="flex items-center justify-between">
+                  <h3 className="mb-1 text-lg font-semibold">{item.title}</h3>
+                  <motion.div
+                    animate={{ rotate: expandedIndex === index ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <ChevronDown className="h-5 w-5 text-primary" />
+                  </motion.div>
+                </div>
+                <h4 className="mb-2 text-md font-medium text-primary">{item.subtitle}</h4>
+                <p className="text-sm font-normal text-muted-foreground mb-2">
                   {item.description}
                 </p>
-              </div>
+
+                <AnimatePresence>
+                  {expandedIndex === index && item.details && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="mt-4 pt-4 border-t border-border"
+                    >
+                      <ul className="space-y-2">
+                        {item.details.map((detail, detailIndex) => (
+                          <motion.li
+                            key={detailIndex}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: detailIndex * 0.05 }}
+                            className="flex items-start gap-2 text-sm"
+                          >
+                            <span className="text-primary mt-1">•</span>
+                            <span>{detail}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>

@@ -5,6 +5,12 @@ import { motion } from "framer-motion"
 import { ArrowDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import dynamic from "next/dynamic"
+
+const Scene3D = dynamic(() => import("@/components/3D/Scene3D"), {
+  ssr: false,
+  loading: () => null,
+});
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false)
@@ -14,12 +20,14 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative h-screen flex flex-col items-center justify-center text-center px-4">
+    <section className="relative h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+      <Scene3D />
+      
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="max-w-3xl mx-auto"
+        className="max-w-3xl mx-auto relative z-20"
       >
         <motion.h1
           className="text-4xl md:text-6xl font-bold mb-6"
@@ -52,7 +60,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 2 }}
-        className="absolute bottom-10"
+        className="absolute bottom-10 z-20"
       >
         <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}>
           <Link href="#about">

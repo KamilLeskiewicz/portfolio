@@ -7,6 +7,7 @@ import { Menu, X, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/mode-toggle"
 import { useMobile } from "@/hooks/use-mobile"
+import CVPreview from "@/components/CVPreview"
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -36,6 +37,7 @@ export default function Navbar() {
     { href: "#roadmap", label: "Journey" },
     { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
+    { href: "#gallery", label: "Gallery" },
     { href: "#contact", label: "Contact" },
   ]
 
@@ -59,12 +61,15 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <Button variant="outline" size="sm" className="hidden md:flex" asChild>
-              <a href="/Kamil.pdf" download>
-                <FileText className="mr-2 h-4 w-4" />
-                Download CV
-              </a>
-            </Button>
+            <div className="hidden md:flex items-center gap-2">
+              <CVPreview />
+              <Button variant="outline" size="sm" asChild>
+                <a href="/Kamil.pdf" download>
+                  <FileText className="mr-2 h-4 w-4" />
+                  Download
+                </a>
+              </Button>
+            </div>
             <ModeToggle />
 
             <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMenu}>
@@ -102,15 +107,18 @@ export default function Navbar() {
                     {link.label}
                   </Link>
                 ))}
-                <a
-                  href="/Kamil.pdf"
-                  download
-                  className="text-lg font-medium py-2 hover:text-primary transition-colors flex items-center"
-                  onClick={toggleMenu}
-                >
-                  <FileText className="mr-2 h-5 w-5" />
-                  Download CV
-                </a>
+                <div className="flex items-center gap-2 py-2">
+                  <CVPreview />
+                  <a
+                    href="/Kamil.pdf"
+                    download
+                    className="flex-1 text-lg font-medium hover:text-primary transition-colors flex items-center"
+                    onClick={toggleMenu}
+                  >
+                    <FileText className="mr-2 h-5 w-5" />
+                    Download CV
+                  </a>
+                </div>
               </nav>
             </div>
           </motion.div>

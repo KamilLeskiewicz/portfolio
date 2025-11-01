@@ -13,6 +13,14 @@ export default function Projects() {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   const projects = [
+    {
+      title: "cyk.pl - AI Mental Support",
+      description: "🏆 2nd Place at Techni Schools Code Camp Warsaw 2024! An AI-powered virtual psychologist built on the Bielik model, combining smart initial diagnosis, empathetic AI conversations, and real-time human supervision to provide immediate and professional-quality mental support.",
+      image: "/#",
+      altText: "cyk.pl - AI Mental Support - 2nd place hackathon project",
+      tags: ["TypeScript", "Node.js", "Express", "MongoDB", "Bielik AI", "HTML", "CSS"],
+      githubUrl: "https://github.com/AzpektDev/cyk.pl",
+    },
         {
       title: "JSON reader",
       description: "An application that allows easy viewing of data in JSON format, sent from the backend. The tool effectively presents content in the form of lesson notes on the page, making them easier to read and organize.",

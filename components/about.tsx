@@ -57,13 +57,13 @@ export default function About() {
             </motion.h2>
 
             <motion.p variants={itemVariants} className="text-lg mb-4">
-            I am a young, ambitious, learning programmer with passion and solid technical knowledge.
-            I specialize in Web Development, I have full-stack skills and I am constantly developing my competences in this direction. 
+            I am a young, ambitious programmer with passion and solid technical knowledge.
+            I specialize in Web Development with full-stack skills and I am constantly expanding my competences in this direction. 
             </motion.p>
 
             <motion.p variants={itemVariants} className="text-lg mb-6">
-            I am a full-stack working for RedSteel.
-            I find myself perfectly in both teamwork and in independent implementation of projects. 
+            I am a full-stack developer working at RedSteel.
+            I excel in both teamwork and independent project implementation. 
             I am open to new challenges and constantly strive to improve my skills.
             </motion.p>
 
