@@ -11,8 +11,39 @@ declare global {
 
 export default function Clarity({ projectId }: { projectId: string }) {
   useEffect(() => {
-    if (process.env.NODE_ENV === "production" && projectId && typeof window !== "undefined" && window.clarity) {
-      window.clarity("set", projectId);
+    if (process.env.NODE_ENV === "production" && projectId && typeof window !== "undefined") {
+      const initializeClarity = () => {
+        if (window.clarity) {
+          window.clarity("set", projectId);
+          
+
+          window.clarity("consent");
+          
+          return true;
+        }
+        return false;
+      };
+
+      let checkClarityInterval: NodeJS.Timeout | null = null;
+      let timeoutId: NodeJS.Timeout | null = null;
+
+      if (!initializeClarity()) {
+        checkClarityInterval = setInterval(() => {
+          if (initializeClarity()) {
+            if (checkClarityInterval) clearInterval(checkClarityInterval);
+            if (timeoutId) clearTimeout(timeoutId);
+          }
+        }, 100);
+        
+        timeoutId = setTimeout(() => {
+          if (checkClarityInterval) clearInterval(checkClarityInterval);
+        }, 5000);
+      }
+
+      return () => {
+        if (checkClarityInterval) clearInterval(checkClarityInterval);
+        if (timeoutId) clearTimeout(timeoutId);
+      };
     }
   }, [projectId]);
 
