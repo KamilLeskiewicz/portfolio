@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pl_PL",
-    url: "https://ewilanow.pl",
+    url: "https://kamil.leskiewicz.pl",
     siteName: "Kamil Leśkiewicz - Portfolio",
     title: "Kamil Leśkiewicz | Programista Fullstack & Web Developer",
     description: "Portfolio Kamila Leśkiewicza - programista fullstack specjalizujący się w tworzeniu nowoczesnych aplikacji webowych.",

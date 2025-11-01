@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
  
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://ewialnow.pl'
+  const baseUrl = 'https://kamil.leskiewicz.pl'
   
   return [
     {
