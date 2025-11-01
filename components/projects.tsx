@@ -7,10 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import Link from "next/link";
-import { useImageProtection } from "@/hooks/useImageProtection";
-
 export default function Projects() {
-  useImageProtection();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
@@ -116,25 +113,17 @@ export default function Projects() {
 
 function ProjectCard({ project }: { project: any }) {
   return (
-    <Card className="overflow-hidden group h-full flex flex-col select-none">
-      <div 
-        className="relative h-48 overflow-hidden"
-        onContextMenu={(e) => e.preventDefault()}
-        onDragStart={(e) => e.preventDefault()}
-      >
+    <Card className="overflow-hidden group h-full flex flex-col">
+      <div className="relative h-48 overflow-hidden">
         <Image
           src={project.image || "/placeholder.svg"}
           alt={project.altText || project.title}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110 select-none"
-          draggable={false}
-          onContextMenu={(e) => e.preventDefault()}
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
+          title={project.title}
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
-        <div 
-          className="absolute inset-0 z-10"
-          onContextMenu={(e) => e.preventDefault()}
-          onDragStart={(e) => e.preventDefault()}
-        ></div>
       </div>
       <CardContent className="p-6 flex-1 flex flex-col">
         <h3 className="text-xl font-bold mb-2">{project.title}</h3>

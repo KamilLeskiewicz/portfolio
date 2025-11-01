@@ -3,10 +3,8 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import Image from "next/image"
-import { useImageProtection } from "@/hooks/useImageProtection"
 
 export default function About() {
-  useImageProtection()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.3 })
 
@@ -39,26 +37,18 @@ export default function About() {
           animate={isInView ? "visible" : "hidden"}
           className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
         >
-          <motion.div variants={itemVariants} className="relative select-none">
-            <div 
-              className="relative h-[400px] rounded-lg overflow-hidden"
-              onContextMenu={(e) => e.preventDefault()}
-              onDragStart={(e) => e.preventDefault()}
-            >
+          <motion.div variants={itemVariants} className="relative">
+            <div className="relative h-[400px] rounded-lg overflow-hidden">
               <Image 
                 src="/about.JPEG" 
-                alt="Kamil Leśkiewicz - Programista Fullstack i Web Developer" 
+                alt="Kamil Leśkiewicz - Fullstack Developer and Web Developer portfolio photo" 
                 fill 
-                className="object-cover select-none"
+                className="object-cover"
                 priority
-                draggable={false}
-                onContextMenu={(e) => e.preventDefault()}
+                title="Kamil Leśkiewicz - Fullstack Developer"
+                loading="eager"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
-              <div 
-                className="absolute inset-0 z-10"
-                onContextMenu={(e) => e.preventDefault()}
-                onDragStart={(e) => e.preventDefault()}
-              ></div>
             </div>
             <div className="absolute -bottom-4 -right-4 h-full w-full border-4 border-primary rounded-lg -z-10"></div>
           </motion.div>

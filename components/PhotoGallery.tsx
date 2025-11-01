@@ -7,12 +7,17 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import { useImageProtection } from "@/hooks/useImageProtection";
+interface PhotoSEO {
+  title?: string;
+  description?: string;
+  keywords?: string[];
+}
 
 interface Photo {
   src: string;
   alt: string;
   caption?: string;
+  seo?: PhotoSEO;
 }
 
 interface Event {
@@ -23,7 +28,6 @@ interface Event {
 }
 
 export default function PhotoGallery() {
-  useImageProtection();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
@@ -42,43 +46,83 @@ export default function PhotoGallery() {
       photos: [
         {
           src: "/gallery/hackathon2025.jpg",
-          alt: "Award ceremony",
+          alt: "Kamil Leśkiewicz receiving award at Techni Schools Code Camp hackathon 2025 in Warsaw - Fullstack Developer portfolio",
           caption: "Receiving award",
+          seo: {
+            title: "Kamil Leśkiewicz - Hackathon Award Ceremony Techni Schools Code Camp 2025",
+            description: "Kamil Leśkiewicz, fullstack developer, receiving award at Techni Schools Code Camp hackathon 2025 in Warsaw. Portfolio photo gallery.",
+            keywords: ["Kamil Leśkiewicz", "hackathon", "award", "techni schools", "warsaw", "coding competition", "programming", "fullstack developer"],
+          },
         },
         {
           src: "/gallery/hackathon2025(1).jpg",
-          alt: "Award ceremony",
+          alt: "Award ceremony at Techni Schools Code Camp hackathon 2025 - Kamil Leśkiewicz portfolio gallery",
           caption: "Receiving award",
+          seo: {
+            title: "Kamil Leśkiewicz - Hackathon Award Ceremony Techni Schools 2025",
+            description: "Award ceremony moment from Techni Schools Code Camp hackathon 2025 featuring Kamil Leśkiewicz. Web developer portfolio photos.",
+            keywords: ["Kamil Leśkiewicz", "hackathon", "award ceremony", "techni schools", "coding competition", "web developer"],
+          },
         },
         {
           src: "/gallery/hackathon2025(2).jpg",
-          alt: "Project presentation",
+          alt: "Kamil Leśkiewicz presenting project at Techni Schools hackathon 2025 - Programista portfolio",
           caption: "Project presentation",
+          seo: {
+            title: "Kamil Leśkiewicz - Project Presentation at Hackathon Techni Schools 2025",
+            description: "Kamil Leśkiewicz presenting project at Techni Schools Code Camp hackathon. Fullstack developer portfolio gallery.",
+            keywords: ["Kamil Leśkiewicz", "project presentation", "hackathon", "techni schools", "programista", "fullstack developer"],
+          },
         },
         {
           src: "/gallery/hackathon2025(3).jpg",
-          alt: "Project presentation",
+          alt: "Hackathon project presentation by Kamil Leśkiewicz - Portfolio gallery Techni Schools",
           caption: "Project presentation",
+          seo: {
+            title: "Kamil Leśkiewicz - Hackathon Project Presentation 2025",
+            description: "Kamil Leśkiewicz during project presentation at Techni Schools Code Camp hackathon. Web developer portfolio.",
+            keywords: ["Kamil Leśkiewicz", "project presentation", "hackathon", "coding", "programming", "web developer"],
+          },
         },
         {
           src: "/gallery/hackathon2025(4).jpg",
-          alt: "Project presentation",
+          alt: "Team presenting project at Techni Schools hackathon 2025 with Kamil Leśkiewicz",
           caption: "Project presentation",
+          seo: {
+            title: "Kamil Leśkiewicz Team - Project Presentation Hackathon 2025",
+            description: "Team including Kamil Leśkiewicz presenting project at Techni Schools Code Camp hackathon. Developer portfolio photos.",
+            keywords: ["Kamil Leśkiewicz", "team presentation", "hackathon", "coding competition", "programista"],
+          },
         },
         {
           src: "/gallery/hackathon2025(5).jpg",
-          alt: "Project presentation",
+          alt: "Kamil Leśkiewicz project demo at coding hackathon in Warsaw - Portfolio gallery",
           caption: "Project presentation",
+          seo: {
+            title: "Kamil Leśkiewicz - Project Demo Hackathon Techni Schools 2025",
+            description: "Kamil Leśkiewicz demonstrating project during hackathon presentation in Warsaw. Fullstack developer portfolio.",
+            keywords: ["Kamil Leśkiewicz", "project demo", "hackathon", "presentation", "warsaw", "programista"],
+          },
         },
         {
           src: "/gallery/hackathon2025(work).jpg",
-          alt: "Work on the project",
+          alt: "Kamil Leśkiewicz working on hackathon project - coding and development during competition",
           caption: "Work on the project",
+          seo: {
+            title: "Kamil Leśkiewicz - Hackathon Coding Session Techni Schools 2025",
+            description: "Kamil Leśkiewicz working on project during Techni Schools Code Camp hackathon. Web developer portfolio work photos.",
+            keywords: ["Kamil Leśkiewicz", "hackathon work", "coding", "development", "programming competition", "programista"],
+          },
         },
         {
           src: "/gallery/hackathon2025(work2).jpg",
-          alt: "Work on the project",
+          alt: "Kamil Leśkiewicz development process during hackathon - Portfolio coding session",
           caption: "Work on the project",
+          seo: {
+            title: "Kamil Leśkiewicz - Development Process Hackathon Work Session",
+            description: "Kamil Leśkiewicz during development and coding session at hackathon competition. Fullstack developer portfolio gallery.",
+            keywords: ["Kamil Leśkiewicz", "development", "coding", "hackathon", "programming", "fullstack developer"],
+          },
         },
       ],
     },
@@ -162,8 +206,35 @@ export default function PhotoGallery() {
     }
   };
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": "Kamil Leśkiewicz - Portfolio Photo Gallery",
+    "description": "Photos from hackathons, conferences, and learning experiences featuring Kamil Leśkiewicz - Fullstack Developer portfolio",
+    "author": {
+      "@type": "Person",
+      "name": "Kamil Leśkiewicz",
+      "jobTitle": "Fullstack Developer",
+    },
+    "image": events.flatMap(event => event.photos.map(photo => ({
+      "@type": "ImageObject",
+      "url": photo.src,
+      "name": photo.seo?.title || photo.alt,
+      "description": photo.seo?.description || photo.caption || photo.alt,
+      "keywords": photo.seo?.keywords?.join(", ") || "",
+      "creator": {
+        "@type": "Person",
+        "name": "Kamil Leśkiewicz",
+      },
+    }))),
+  };
+
   return (
     <section id="gallery" className="py-20 px-4 bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -173,7 +244,7 @@ export default function PhotoGallery() {
         >
           <h2 className="text-3xl font-bold mb-4">Photo Gallery</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Moments captured from hackathons, conferences, and learning experiences
+            Moments captured from hackathons, conferences, and learning experiences - Kamil Leśkiewicz portfolio
           </p>
         </motion.div>
 
@@ -228,9 +299,7 @@ export default function PhotoGallery() {
                       <motion.div
                         key={photoIndex}
                         variants={photoVariants}
-                        className="group relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer select-none"
-                        onContextMenu={(e) => e.preventDefault()}
-                        onDragStart={(e) => e.preventDefault()}
+                        className="group relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer"
                       >
                         {!loadedImages.has(photo.src) && (
                           <Skeleton className="absolute inset-0 z-10" />
@@ -239,16 +308,15 @@ export default function PhotoGallery() {
                           src={photo.src}
                           alt={photo.alt}
                           fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-110 select-none"
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
                           onLoad={() => handleImageLoad(photo.src)}
-                          draggable={false}
-                          onContextMenu={(e) => e.preventDefault()}
+                          title={photo.seo?.title || photo.alt}
+                          loading="lazy"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         />
                         <div 
                           className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end z-20"
                           onClick={() => handlePhotoClick(photo, photoIndex, event.photos)}
-                          onContextMenu={(e) => e.preventDefault()}
-                          onDragStart={(e) => e.preventDefault()}
                         >
                           <div className="p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-full">
                             {photo.caption && (
@@ -311,9 +379,8 @@ export default function PhotoGallery() {
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
                 exit={{ scale: 0.8 }}
-                className="relative max-w-6xl max-h-[90vh] w-full h-full flex flex-col items-center justify-center select-none"
+                className="relative max-w-6xl max-h-[90vh] w-full h-full flex flex-col items-center justify-center"
                 onClick={(e) => e.stopPropagation()}
-                onContextMenu={(e) => e.preventDefault()}
               >
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Image
@@ -321,15 +388,11 @@ export default function PhotoGallery() {
                     alt={selectedPhoto.photo.alt}
                     width={1920}
                     height={1080}
-                    className="object-contain max-h-[80vh] w-auto h-auto select-none"
-                    draggable={false}
-                    onContextMenu={(e) => e.preventDefault()}
+                    className="object-contain max-h-[80vh] w-auto h-auto"
+                    title={selectedPhoto.photo.seo?.title || selectedPhoto.photo.alt}
+                    loading="eager"
+                    priority
                   />
-                  <div 
-                    className="absolute inset-0 z-10"
-                    onContextMenu={(e) => e.preventDefault()}
-                    onDragStart={(e) => e.preventDefault()}
-                  ></div>
                 </div>
                 {selectedPhoto.photo.caption && (
                   <p className="text-white text-center mt-4 text-lg">
