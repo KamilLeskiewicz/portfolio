@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://kamilleskiewicz.vercel.app",
+    canonical: "https://kamil.leskiewicz.pl",
   },
 };
 
@@ -72,7 +72,7 @@ const jsonLd = {
   "@type": "Person",
   name: "Kamil Leśkiewicz",
   alternateName: "K. Leśkiewicz",
-  url: "https://kamilleskiewicz.vercel.app",
+  url: "https://kamil.leskiewicz.pl",
   image: "/about.JPEG",
   jobTitle: "Fullstack Developer",
   worksFor: {
