@@ -44,16 +44,16 @@ export default function PhotoGallery() {
       date: "October 2025",
       description: "Hackathon at Techni Schools Code Camp in Warsaw",
       photos: [
-        // {
-        //   src: "/gallery/hackathon2025.jpg",
-        //   alt: "Kamil Leśkiewicz receiving award at Techni Schools Code Camp hackathon 2025 in Warsaw - Fullstack Developer portfolio",
-        //   caption: "Receiving award",
-        //   seo: {
-        //     title: "Kamil Leśkiewicz - Hackathon Award Ceremony Techni Schools Code Camp 2025",
-        //     description: "Kamil Leśkiewicz, fullstack developer, receiving award at Techni Schools Code Camp hackathon 2025 in Warsaw. Portfolio photo gallery.",
-        //     keywords: ["Kamil Leśkiewicz", "hackathon", "award", "techni schools", "warsaw", "coding competition", "programming", "fullstack developer"],
-        //   },
-        // },
+        {
+          src: "/gallery/hackathon2025.jpg",
+          alt: "Kamil Leśkiewicz receiving award at Techni Schools Code Camp hackathon 2025 in Warsaw - Fullstack Developer portfolio",
+          caption: "Receiving award",
+          seo: {
+            title: "Kamil Leśkiewicz - Hackathon Award Ceremony Techni Schools Code Camp 2025",
+            description: "Kamil Leśkiewicz, fullstack developer, receiving award at Techni Schools Code Camp hackathon 2025 in Warsaw. Portfolio photo gallery.",
+            keywords: ["Kamil Leśkiewicz", "hackathon", "award", "techni schools", "warsaw", "coding competition", "programming", "fullstack developer"],
+          },
+        },
         {
           src: "/gallery/hackathon2025(1).jpg",
           alt: "Award ceremony at Techni Schools Code Camp hackathon 2025 - Kamil Leśkiewicz portfolio gallery",
