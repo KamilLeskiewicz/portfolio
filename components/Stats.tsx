@@ -71,7 +71,7 @@ export default function Stats() {
       color: "from-purple-500 to-pink-500",
     },
     {
-      label: "Happy Clients",
+      label: "Commercial Projects",
       value: 3,
       suffix: "+",
       icon: <Users className="h-8 w-8" />,

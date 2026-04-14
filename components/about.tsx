@@ -3,6 +3,9 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import Image from "next/image"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
 
 export default function About() {
   const ref = useRef(null)
@@ -60,16 +63,25 @@ export default function About() {
             </motion.h2>
 
             <motion.p variants={itemVariants} className="text-base sm:text-lg mb-3 sm:mb-4">
-            I am a young, ambitious programmer with passion and solid technical knowledge.
-            I specialize in Web Development with full-stack skills and I am constantly expanding my competences in this direction. 
+              I build full-stack web applications using <span className="text-primary font-medium">Next.js, TypeScript and Node.js</span>.
+              Currently at RedSteel, where I develop features with Payload CMS and RESTful APIs —
+              shipping production code daily.
             </motion.p>
 
             <motion.p variants={itemVariants} className="text-base sm:text-lg mb-4 sm:mb-6">
-            I am a full-stack developer working at RedSteel.
-            I excel in both teamwork and independent project implementation. 
-            I am open to new challenges and constantly strive to improve my skills.
+              I care about clean architecture and solid UX. Won <span className="text-primary font-medium">2nd place</span> at
+              Techni Schools Code Camp 2024 Warsaw, building an AI mental health platform in 24h.
+              Always chasing the next challenge.
             </motion.p>
 
+            <motion.div variants={itemVariants}>
+              <Button asChild>
+                <Link href="#projects" className="flex items-center gap-2">
+                  See my projects
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+            </motion.div>
 
           </div>
         </motion.div>

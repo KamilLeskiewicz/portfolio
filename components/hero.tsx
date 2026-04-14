@@ -9,7 +9,11 @@ import dynamic from "next/dynamic"
 
 const Scene3D = dynamic(() => import("@/components/3D/Scene3D"), {
   ssr: false,
-  loading: () => null,
+  loading: () => (
+    <div className="absolute inset-0 w-full h-85 -z-0 pointer-events-none">
+      <div className="w-full h-full bg-gradient-to-b from-primary/5 via-transparent to-transparent animate-pulse" />
+    </div>
+  ),
 });
 
 export default function Hero() {

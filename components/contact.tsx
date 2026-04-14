@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
-import { Mail, MapPin } from "lucide-react"
+import { MapPin } from "lucide-react"
 
 export default function Contact() {
   const ref = useRef(null)
@@ -51,17 +51,6 @@ export default function Contact() {
         >
           <motion.div variants={itemVariants} className="space-y-4 sm:space-y-6">
             <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Contact Information</h3>
-
-            <div className="flex items-start gap-3 sm:gap-4">
-              <div className="bg-primary/10 p-2.5 sm:p-3 rounded-full text-primary flex-shrink-0">
-                <Mail className="h-4 w-4 sm:h-5 sm:w-5" />
-              </div>
-              <div>
-                <h4 className="text-sm sm:text-base font-medium">Email</h4>
-                <p className="text-xs sm:text-sm text-muted-foreground break-all">kamil@leskiewicz.pl</p>
-              </div>
-            </div>
-
 
             <div className="flex items-start gap-3 sm:gap-4">
               <div className="bg-primary/10 p-2.5 sm:p-3 rounded-full text-primary flex-shrink-0">

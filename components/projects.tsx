@@ -15,7 +15,8 @@ export default function Projects() {
     {
       title: "cyk.pl - AI Mental Support",
       description: "🏆 2nd Place at Techni Schools Code Camp Warsaw 2024! An AI-powered virtual psychologist built on the Bielik model, combining smart initial diagnosis, empathetic AI conversations, and real-time human supervision to provide immediate and professional-quality mental support.",
-      image: "/#",
+      image: null,
+      imageBg: "bg-white",
       altText: "cyk.pl - AI Mental Support - 2nd place hackathon project",
       tags: ["TypeScript", "Node.js", "Express", "MongoDB", "Bielik AI", "HTML", "CSS"],
       githubUrl: "https://github.com/AzpektDev/cyk.pl",
@@ -114,16 +115,18 @@ export default function Projects() {
 function ProjectCard({ project }: { project: any }) {
   return (
     <Card className="overflow-hidden group h-full flex flex-col">
-      <div className="relative h-40 sm:h-48 overflow-hidden">
-        <Image
-          src={project.image || "/placeholder.svg"}
-          alt={project.altText || project.title}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
-          title={project.title}
-          loading="lazy"
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        />
+      <div className={`relative h-40 sm:h-48 overflow-hidden ${project.imageBg || ""}`}>
+        {project.image && (
+          <Image
+            src={project.image}
+            alt={project.altText || project.title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+            title={project.title}
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        )}
       </div>
       <CardContent className="p-4 sm:p-6 flex-1 flex flex-col">
         <h3 className="text-lg sm:text-xl font-bold mb-2">{project.title}</h3>

@@ -7,8 +7,6 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Script from "next/script";
-import Clarity from "@/components/analytics/Clarity";
-import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -101,9 +99,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || "";
-  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "";
-
   return (
     <html lang="pl" suppressHydrationWarning>
       <head>
@@ -126,8 +121,6 @@ export default function RootLayout({
             <Footer />
           </ThemeProvider>
         </ErrorBoundary>
-        {clarityProjectId && <Clarity projectId={clarityProjectId} />}
-        {gaMeasurementId && <GoogleAnalytics measurementId={gaMeasurementId} />}
       </body>
     </html>
   );
