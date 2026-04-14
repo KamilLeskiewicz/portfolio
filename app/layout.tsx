@@ -68,10 +68,11 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "https://kamil.leskiewicz.pl/#person",
   name: "Kamil Leśkiewicz",
   alternateName: "K. Leśkiewicz",
   url: "https://kamil.leskiewicz.pl",
-  image: "/about.JPEG",
+  image: "https://kamil.leskiewicz.pl/about.JPEG",
   jobTitle: "Fullstack Developer",
   worksFor: {
     "@type": "Organization",
@@ -91,6 +92,7 @@ const jsonLd = {
   ],
   sameAs: [
     "https://github.com/KamilLeskiewicz",
+    "https://www.linkedin.com/in/kamil-le%C5%9Bkiewicz-4548bb254/",
   ],
 };
 
