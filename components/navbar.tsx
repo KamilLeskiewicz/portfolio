@@ -61,7 +61,7 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-4">
-            <div className="hidden md:flex items-center gap-2">
+            {/* <div className="hidden md:flex items-center gap-2">
               <CVPreview />
               <Button variant="outline" size="sm" asChild>
                 <a href="/Kamil.pdf" download>
@@ -69,7 +69,7 @@ export default function Navbar() {
                   <span className="hidden lg:inline">Download</span>
                 </a>
               </Button>
-            </div>
+            </div> */}
             <ModeToggle />
 
             <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMenu}>
@@ -107,7 +107,7 @@ export default function Navbar() {
                     {link.label}
                   </Link>
                 ))}
-                <div className="flex items-center gap-2 py-2">
+                {/* <div className="flex items-center gap-2 py-2">
                   <CVPreview />
                   <a
                     href="/Kamil.pdf"
@@ -118,7 +118,7 @@ export default function Navbar() {
                     <FileText className="mr-2 h-5 w-5" />
                     Download CV
                   </a>
-                </div>
+                </div> */}
               </nav>
             </div>
           </motion.div>
